@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useReducer } from 'react';
 import type { GameState, GameStats, StoryOption } from '../types/game';
 import storyData from '../data/story.json';

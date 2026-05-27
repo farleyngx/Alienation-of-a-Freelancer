@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useGameState } from '../hooks/useGameState';
-import { StatBar } from './StatBar';
+import { useGameState } from '../../hooks/useGameState';
+import { StatBar } from '../scratches/StatBar';
 
 export const GameScreen: React.FC = () => {
   const { state, currentNode, makeChoice, resetGame } = useGameState();
