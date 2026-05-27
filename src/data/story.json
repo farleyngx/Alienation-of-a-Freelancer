@@ -1,0 +1,233 @@
+{
+  "nodes": {
+    "start_node": {
+      "id": "start_node",
+      "speaker": "PLAYER",
+      "text": "Cuối cùng cũng nộp đơn nghỉ việc công ty! Từ hôm nay mình là Freelancer, tự do sáng tạo, tự làm chủ thời gian, tự quyết định cuộc đời mình. Không còn lão sếp nào bóc lột mình nữa!",
+      "options": [
+        {
+          "text": "Mở máy tính lên, đăng ký tài khoản trên Nền tảng số và tìm job đầu tiên.",
+          "next_node_id": "node_first_job",
+          "effects": { "freedom": 10, "traffic": 10 }
+        }
+      ]
+    },
+    "node_first_job": {
+      "id": "node_first_job",
+      "speaker": "ALGORITHM",
+      "text": "*Ting!* Chào mừng Nhà sáng tạo mới gia nhập hệ thống. Để hỗ trợ bạn, Thuật toán đang kích hoạt chế độ 'Đẩy Traffic tân thủ'. Tuy nhiên, mức chiết khấu mặc định của nền tảng là 30% trên mỗi sản phẩm. Bạn có một dự án cần giao trong 24 giờ tới để duy trì uy tín.",
+      "options": [
+        {
+          "text": "Chấp nhận điều khoản. Mình có máy tính, có kỹ năng, mình tự làm cho mình cơ mà!",
+          "next_node_id": "node_the_loop",
+          "effects": { "money": 10, "health": -10 }
+        }
+      ]
+    },
+    "node_the_loop": {
+      "id": "node_the_loop",
+      "speaker": "SYSTEM",
+      "text": "Hệ thống cảnh báo: Bạn đã code và làm nội dung liên tục 12 tiếng. Mắt nhòe đi, lưng đau nhức. Đúng lúc này, Thuật toán thông báo: 'Lưu lượng truy cập toàn hệ thống đang tăng cao. Nếu bạn nhận thêm 1 job gấp giá rẻ ngay bây giờ, bạn sẽ giữ được Top Ranking. Nếu bỏ qua, Traffic của bạn sẽ bị giảm 30%'.",
+      "options": [
+        {
+          "text": "Cày xuyên đêm nhận thêm job. 'Thuật toán không đợi ai, phải tích lũy tư bản trước đã!'",
+          "next_node_id": "node_burnout_choice",
+          "effects": { "money": 25, "health": -30, "traffic": 25, "freedom": -20, "identity": -15 }
+        },
+        {
+          "text": "Tắt máy đi ngủ. 'Sức khỏe là trên hết, mình làm chủ thời gian của mình mà!'",
+          "next_node_id": "node_punished_by_algo",
+          "effects": { "money": -10, "health": 20, "traffic": -35, "freedom": 15 }
+        },
+        {
+          "text": "Dùng AI và công cụ auto để clone/spam nội dung hàng loạt cho nhanh nhằm giữ Traffic.",
+          "next_node_id": "node_ai_cheat",
+          "effects": { "health": 10, "traffic": 20, "identity": -35, "freedom": -10 }
+        }
+      ]
+    },
+    "node_punished_by_algo": {
+      "id": "node_punished_by_algo",
+      "speaker": "ALGORITHM",
+      "text": "Sáng hôm sau tỉnh dậy, tài khoản của bạn nhận thông báo: 'Do tỷ lệ phản hồi chậm và không tối ưu hóa thời gian tương tác, Thuật toán đã giảm mức độ ưu tiên hiển thị của bạn'. Số lượng khách hàng giảm 80%. Bạn nhận ra cái gọi là 'tự do tự tại' hóa ra phụ thuộc hoàn toàn vào bộ quy tắc ẩn của nền tảng.",
+      "options": [
+        {
+          "text": "Chấp nhận hạ giá thù lao xuống 50% và chạy quảng cáo nạp tiền cho nền tảng để 'xin' lại Traffic.",
+          "next_node_id": "node_client_from_hell",
+          "effects": { "money": -25, "traffic": 40, "identity": -10 }
+        },
+        {
+          "text": "Không thể chịu đựng sự vô lý này nữa. Tìm kiếm những Freelancer khác trên diễn đàn để xem họ giải quyết thế nào.",
+          "next_node_id": "node_class_consciousness",
+          "effects": { "freedom": 10, "identity": 20 }
+        }
+      ]
+    },
+    "node_burnout_choice": {
+      "id": "node_burnout_choice",
+      "speaker": "NARRATOR",
+      "text": "Tiền đổ về tài khoản, Traffic tăng vọt! Bạn lọt top những nhà sáng tạo năng suất nhất tuần. Nhưng bạn nhận ra mình không còn làm ra sản phẩm vì đam mê nữa, bạn đang làm những nội dung giật gân, vô nghĩa chỉ để 'bú trend' theo sở thích của Thuật toán. Cơ thể bạn rệu rã.",
+      "options": [
+        {
+          "text": "Uống bò húc, cắn răng làm tiếp. Đã đâm lao phải theo lao!",
+          "next_node_id": "node_client_from_hell",
+          "effects": { "money": 30, "health": -35, "traffic": 30, "identity": -25 }
+        },
+        {
+          "text": "Dừng lại một nhịp, trích tiền mua một khóa học chữa lành và thiết bị công nghệ mới để tăng năng suất.",
+          "next_node_id": "node_ai_shock",
+          "effects": { "money": -30, "health": 15, "freedom": 5 }
+        }
+      ]
+    },
+    "node_ai_cheat": {
+      "id": "node_ai_cheat",
+      "speaker": "SYSTEM",
+      "text": "Việc dùng AI giúp bạn rảnh tay, nhưng nội dung tạo ra trở nên rập khuôn, vô hồn. Độc giả bắt đầu phàn nàn. Nền tảng cập nhật thuật toán quét quét nội dung rác.",
+      "options": [
+        {
+          "text": "May mắn thoát quét! Bạn tối ưu prompt để AI 'lách luật' tinh vi hơn và traffic tăng đột biến.",
+          "next_node_id": "node_platform_offer",
+          "effects": { "money": 20, "traffic": 30, "identity": -20 }
+        },
+        {
+          "text": "Hệ thống phát hiện bất thường! Tài khoản của bạn bị gắn cờ cảnh cáo nghiêm trọng và bóp tương tác cực nặng.",
+          "next_node_id": "node_punished_by_algo",
+          "effects": { "traffic": -40, "money": -15 }
+        }
+      ]
+    },
+    "node_client_from_hell": {
+      "id": "node_client_from_hell",
+      "speaker": "CLIENT",
+      "text": "*Reng reng!* Khách hàng gọi điện lúc 11 giờ đêm: 'Em ơi sửa lại toàn bộ giao diện dự án lần thứ 12 cho anh nhé. Anh thấy màu xanh này chưa hợp phong thủy. Sáng mai 8h anh phải thuyết trình rồi. Không làm anh sẽ hủy hợp đồng và đánh giá 1 sao đấy!'",
+      "options": [
+        {
+          "text": "Cắn răng thức trắng đêm sửa đổi. 'Khách hàng là thượng đế, điểm uy tín là mạng sống!'",
+          "next_node_id": "node_ai_shock",
+          "effects": { "money": 5, "health": -25, "freedom": -15, "identity": -10 }
+        },
+        {
+          "text": "Kiên quyết từ chối. 'Tôi làm việc độc lập chứ không phải nô lệ thời gian của các người!'",
+          "next_node_id": "node_the_loop",
+          "effects": { "money": -15, "traffic": -30, "freedom": 15, "identity": 10 }
+        },
+        {
+          "text": "Thuê ngoài (outsourcing) lại cho một freelancer khác nghèo hơn với giá cực rẻ để mình đi ngủ.",
+          "next_node_id": "node_platform_offer",
+          "effects": { "money": -5, "health": 15, "identity": -25, "freedom": 5 }
+        }
+      ]
+    },
+    "node_ai_shock": {
+      "id": "node_ai_shock",
+      "speaker": "SYSTEM",
+      "text": "🚨 KHỦNG HOẢNG CÔNG NGHỆ: Nền tảng vừa tích hợp mô hình AI tạo sinh mới có khả năng tự động tạo code và nội dung tương đương bạn trong 5 giây với chi phí gần như bằng 0. Khách hàng ồ ạt hủy hợp đồng với các freelancer thủ công để chuyển sang dùng AI nền tảng.",
+      "options": [
+        {
+          "text": "Chạy đua vũ trang. Học ngày học đêm cách sử dụng AI mới để tăng tốc độ làm việc gấp 5 lần nhằm ép giá cạnh tranh.",
+          "next_node_id": "node_platform_offer",
+          "effects": { "health": -30, "traffic": 15, "identity": -20 }
+        },
+        {
+          "text": "Kiên trì con đường thủ công sáng tạo nghệ thuật độc bản. Từ chối chạy theo cuộc đua cơ giới hóa.",
+          "next_node_id": "node_off_grid_escape",
+          "effects": { "money": -30, "traffic": -25, "identity": 30 }
+        }
+      ]
+    },
+    "node_platform_offer": {
+      "id": "node_platform_offer",
+      "speaker": "ALGORITHM",
+      "text": "*Ting!* Chúc mừng bạn đã đạt tiêu chuẩn hiệu suất cực cao trên hệ thống. Thuật toán gửi lời mời đặc biệt: Trở thành 'Đại sứ Nền tảng' (Platform Partner). Bạn sẽ được đẩy traffic vĩnh viễn và hưởng hoa hồng từ việc quản lý nhóm freelancer mới. Đổi lại, bạn phải bàn giao bản quyền sáng tạo trọn đời cho hệ thống.",
+      "options": [
+        {
+          "text": "Ký hợp đồng! Từ người bị bóc lột, giờ mình sẽ đứng trên đỉnh để cùng Nền tảng kiếm tiền.",
+          "next_node_id": "ending_platform_partner",
+          "effects": { "traffic": 100, "identity": -50, "freedom": -40, "money": 50 }
+        },
+        {
+          "text": "Từ chối. Mình không thể phản bội lại những người anh em lao động tự do khác và giao linh hồn cho cỗ máy.",
+          "next_node_id": "node_class_consciousness",
+          "effects": { "identity": 25, "freedom": 15 }
+        }
+      ]
+    },
+    "node_off_grid_escape": {
+      "id": "node_off_grid_escape",
+      "speaker": "NARRATOR",
+      "text": "Bạn mệt mỏi, túi tiền cạn kiệt, thuật toán ghẻ lạnh. Nhìn ra ngoài cửa sổ, bạn khao khát được chạm vào cỏ cây, được sống một cuộc đời con người đích thực. Một lời mời từ người bạn cũ: 'Về quê lập trang trại hữu cơ đi cậu, tuy nghèo nhưng yên bình.'",
+      "options": [
+        {
+          "text": "Tắt máy tính, bán hết đồ công nghệ, xách ba lô rời khỏi thành phố để về quê sống tự tại.",
+          "next_node_id": "ending_off_grid",
+          "effects": { "freedom": 100, "money": -40, "traffic": -100 }
+        },
+        {
+          "text": "Không thể từ bỏ cuộc sống thành thị hào nhoáng. Bật máy tính lên và tiếp tục tìm job cứu vãn tài chính.",
+          "next_node_id": "node_the_loop",
+          "effects": { "money": 10, "health": -15, "freedom": -5 }
+        }
+      ]
+    },
+    "node_class_consciousness": {
+      "id": "node_class_consciousness",
+      "speaker": "UNION",
+      "text": "Trên các diễn đàn ngầm, bạn gặp hàng ngàn Freelancer khác cũng đang kiệt quệ và bị bóp tương tác giống mình. Mọi người nhận ra: Từng cá nhân riêng lẻ không thể thương lượng với các tập đoàn công nghệ nắm giữ Thuật toán tối cao. Một ý tưởng nhen nhóm: Thành lập một Nghiệp đoàn Số (Digital Union) để cùng nhau đình công và định giá lại mức chiết khấu lao động.",
+      "options": [
+        {
+          "text": "Đứng ra làm admin, kêu gọi thành lập Nghiệp đoàn, chấp nhận bị nền tảng khóa vĩnh viễn tài khoản cá nhân.",
+          "next_node_id": "ending_true_communist",
+          "effects": {}
+        },
+        {
+          "text": "Thôi, rủi ro quá. Mình quay lại cày cuốc âm thầm kiếm cơm qua ngày thôi.",
+          "next_node_id": "node_the_loop",
+          "effects": { "identity": -20, "freedom": -20 }
+        }
+      ]
+    },
+    "ending_burnout": {
+      "id": "ending_burnout",
+      "speaker": "SYSTEM",
+      "text": "🚨 KẾT CỤC: SỰ SỤP ĐỔ SINH HỌC (BURNOUT ENDING)\n\nSức lao động (HP) của bạn đã về 0. Bạn đột quỵ ngay trên bàn phím cơ 3 miền của mình vào lúc 3 giờ sáng khi đang cố hoàn thành deadline của một khách hàng vô danh. Tiền trong tài khoản không kịp rút.\n\nTriết học phản hồi: Chủ nghĩa tư bản nền tảng đã vắt kiệt sức lao động của bạn đến giọt cuối cùng dưới danh nghĩa 'tự nguyện và tự do'. Bạn tưởng mình làm chủ cuộc đời, nhưng thực ra bạn chỉ là một cục pin sinh học dùng một lần của Thuật toán.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_alienation": {
+      "id": "ending_alienation",
+      "speaker": "SYSTEM",
+      "text": "🤖 KẾT CỤC: SỰ THA HÓA HOÀN TOÀN (ALIENATION ENDING)\n\nBản sắc cá nhân của bạn đã về 0. Bạn cực kỳ giàu có, tài khoản nhảy số liên tục, nhưng bạn không còn là một con người sáng tạo nữa. Bạn đã bị biến thành một 'con bot chạy bằng cơm', chỉ biết viết những dòng code rác, sản xuất nội dung vô tri mà Thuật toán yêu thích để đổi lấy Traffic.\n\nTriết học phản hồi: Lao động sáng tạo - thứ phân biệt con người với loài vật - đã bị tước đoạt. Bản thân bạn đã bị 'tha hóa khỏi chính mình', trở thành một công cụ phụ thuộc, một mắt xích vô hồn phục vụ cho sự tự vận động của Tư bản số.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_bankruptcy": {
+      "id": "ending_bankruptcy",
+      "speaker": "SYSTEM",
+      "text": "💸 KẾT CỤC: PHÁ SẢN SỐ (BANKRUPTCY ENDING)\n\nTài chính của bạn chạm đáy. Bạn không có tiền trả tiền mạng, tiền điện, tiền thuê nhà. Bạn bị khóa tài khoản làm việc vì điểm tín nhiệm quá thấp.\n\nTriết học phản hồi: Trong xã hội tư bản, không có tiền đồng nghĩa với việc không thể tái sản xuất sức lao động. Sự tự do không có cơ sở vật chất chỉ là một thứ tự do trừu tượng, ảo tưởng.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_platform_partner": {
+      "id": "ending_platform_partner",
+      "speaker": "SYSTEM",
+      "text": "😈 KẾT CỤC: KHẾ ƯỚC CỦA QUỶ (PLATFORM PARTNER ENDING)\n\nBạn đã ký vào bản hợp đồng đại sứ đặc quyền. Bạn được đẩy traffic lên đỉnh điểm (100%) và trở nên giàu sang tột độ. Nhưng bạn đã giao nộp hoàn toàn bản sắc cá nhân và quyền tự trị của mình cho Nền tảng. Giờ đây, nhiệm vụ của bạn là lùa gà, tổ chức các khóa học bóc lột lại thế hệ freelancer trẻ mới vào nghề.\n\nTriết học phản hồi: Bạn đã phản bội lại giai cấp lao động của mình để bước lên hàng ngũ trung gian của giai cấp tư sản số. Sự tha hóa đã đạt đến hình thức cao nhất: bạn tự nguyện trở thành công cụ đi tha hóa những người khác để đổi lấy đặc quyền tư bản.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_off_grid": {
+      "id": "ending_off_grid",
+      "speaker": "SYSTEM",
+      "text": "🏡 KẾT CỤC: TỰ DO HOANG DÃ (OFF-GRID ENDING)\n\nBạn tắt máy tính, vứt bỏ chiếc smartphone và rời khỏi thành thị để về quê. Bạn sống trong một túp lều tranh, trồng rau hữu cơ và nuôi gà. Bạn nghèo xơ xác, traffic về 0, nhưng bạn cảm nhận được ánh nắng ấm áp và sự yên bình trong tâm hồn.\n\nTriết học phản hồi: Bạn đã chọn con đường trốn chạy cá nhân kiểu vô chính phủ (anarcho-primitivism). Dù bạn thoát khỏi sự kìm kẹp của Thuật toán, hành động này không xóa bỏ được hệ thống áp bức tư bản số trên quy mô xã hội. Bạn chọn sự tự do riêng lẻ và chấp nhận sự thụt lùi về mặt phát triển lực lượng sản xuất.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_true_communist": {
+      "id": "ending_true_communist",
+      "speaker": "SYSTEM",
+      "text": "✊ KẾT CỤC ĐÍCH THỰC: Ý THỨC GIAI CẤP KHỞI SẮC (TRUE ENDING - CLASS CONSCIOUSNESS)\n\nTài khoản cá nhân của bạn bị Nền tảng khóa vĩnh viễn. Bạn mất hết tiền bạc và traffic tích lũy. Nhưng Nghiệp đoàn Số do bạn đồng sáng lập đã thu hút 50.000 thành viên tham gia, buộc các nền tảng phải ngồi vào bàn đàm phán để giảm mức phế và minh bạch hóa thuật toán.\n\nTriết học phản hồi: Chúc mừng! Bạn đã bước qua 'vương quốc của sự tất yếu' để tiến vào 'vương quốc của sự tự do thực sự'. Bằng cách từ bỏ lợi ích cá nhân bị tha hóa, bạn đã đạt được Ý thức giai cấp, biến sức lao động của mình thành động lực giải phóng tập thể khỏi ách thống trị của giai cấp tư sản số.",
+      "options": [],
+      "is_ending": true
+    }
+  }
+}
