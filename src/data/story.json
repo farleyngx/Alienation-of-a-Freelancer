@@ -43,6 +43,11 @@
           "text": "Dùng AI và công cụ auto để clone/spam nội dung hàng loạt cho nhanh nhằm giữ Traffic.",
           "next_node_id": "node_ai_cheat",
           "effects": { "health": 10, "traffic": 20, "identity": -35, "freedom": -10 }
+        },
+        {
+          "text": "Tự mua khóa học 'Trở thành chiến thần chốt đơn'. Thức dậy 4h sáng, làm việc 16 tiếng/ngày, tự đặt KPI tàn khốc cho bản thân.",
+          "next_node_id": "node_toxic_productivity",
+          "effects": { "money": 30, "health": -20, "freedom": -20, "identity": -10 }
         }
       ]
     },
@@ -60,6 +65,11 @@
           "text": "Không thể chịu đựng sự vô lý này nữa. Tìm kiếm những Freelancer khác trên diễn đàn để xem họ giải quyết thế nào.",
           "next_node_id": "node_class_consciousness",
           "effects": { "freedom": 10, "identity": 20 }
+        },
+        {
+          "text": "Mua gói 'Premium Freelancer' với giá 20% thu nhập mỗi tháng để được khôi phục Traffic vĩnh viễn.",
+          "next_node_id": "node_premium_freelancer",
+          "effects": { "money": -20, "traffic": 50 }
         }
       ]
     },
@@ -133,6 +143,11 @@
           "text": "Kiên trì con đường thủ công sáng tạo nghệ thuật độc bản. Từ chối chạy theo cuộc đua cơ giới hóa.",
           "next_node_id": "node_off_grid_escape",
           "effects": { "money": -30, "traffic": -25, "identity": 30 }
+        },
+        {
+          "text": "Đọc kỹ lại Điều khoản (TOS). Bạn phát hiện lý do AI của nền tảng thông minh như vậy là do chúng đã âm thầm học từ chính các dự án của bạn.",
+          "next_node_id": "node_data_discovery",
+          "effects": { "identity": 10 }
         }
       ]
     },
@@ -181,9 +196,106 @@
           "effects": {}
         },
         {
+          "text": "Đình công là chưa đủ. Kêu gọi các kỹ sư cùng nhau viết mã nguồn mở tạo ra một Nền tảng mới của riêng người lao động!",
+          "next_node_id": "node_platform_coop",
+          "effects": { "identity": 30, "money": -30, "freedom": 20 }
+        },
+        {
           "text": "Thôi, rủi ro quá. Mình quay lại cày cuốc âm thầm kiếm cơm qua ngày thôi.",
           "next_node_id": "node_the_loop",
           "effects": { "identity": -20, "freedom": -20 }
+        }
+      ]
+    },
+    "node_premium_freelancer": {
+      "id": "node_premium_freelancer",
+      "speaker": "SYSTEM",
+      "text": "Bạn đã đăng ký gói Premium. Traffic quay trở lại, khách hàng tấp nập. Nhưng giờ đây, hàng tháng bạn phải nộp một khoản 'địa tô' cố định cho nền tảng dù có làm ra sản phẩm hay không.",
+      "options": [
+        {
+          "text": "Cày cuốc điên cuồng để trả phí nền tảng, sợ bị tước mất danh hiệu Premium.",
+          "next_node_id": "node_techno_feudalism_loop",
+          "effects": { "money": 10, "health": -20, "freedom": -20 }
+        }
+      ]
+    },
+    "node_techno_feudalism_loop": {
+      "id": "node_techno_feudalism_loop",
+      "speaker": "ALGORITHM",
+      "text": "Tháng này ế ẩm do thị trường đi xuống, nhưng hóa đơn Premium vẫn đến hạn. Nền tảng gợi ý bạn sử dụng dịch vụ 'Ứng trước lương' với lãi suất ẩn 5% để không bị khóa tài khoản.",
+      "options": [
+        {
+          "text": "Vay nền tảng để trả cho nền tảng. Tiếp tục cày để trả nợ.",
+          "next_node_id": "ending_techno_feudalism",
+          "effects": { "money": -30, "freedom": -30, "identity": -10 }
+        },
+        {
+          "text": "Từ chối và hủy gói Premium, chấp nhận mất tất cả Traffic đã xây dựng.",
+          "next_node_id": "node_punished_by_algo",
+          "effects": { "traffic": -80, "freedom": 10 }
+        }
+      ]
+    },
+    "node_data_discovery": {
+      "id": "node_data_discovery",
+      "speaker": "NARRATOR",
+      "text": "Sức lao động của bạn không chỉ là sản phẩm giao cho khách, mà chính dữ liệu hành vi của bạn đã bị 'hàng hóa hóa' miễn phí để tạo ra kẻ thay thế mình. Hệ thống AI kia được xây dựng trên mồ hôi công sức của hàng triệu người như bạn.",
+      "options": [
+        {
+          "text": "Đứng lên phản kháng ngầm! Cố tình upload các thiết kế lỗi, code sai logic để làm nhiễu loạn dữ liệu huấn luyện (Data Poisoning).",
+          "next_node_id": "node_data_strike",
+          "effects": { "identity": 30, "traffic": -30 }
+        },
+        {
+          "text": "Chấp nhận sự thật cay đắng. Nền tảng là vua, mình chỉ là kiến. Học cách dùng AI của nền tảng để tiếp tục kiếm sống.",
+          "next_node_id": "node_platform_offer",
+          "effects": { "identity": -20, "traffic": 20 }
+        }
+      ]
+    },
+    "node_data_strike": {
+      "id": "node_data_strike",
+      "speaker": "SYSTEM",
+      "text": "🚨 CẢNH BÁO: Thuật toán phát hiện dữ liệu huấn luyện bị nhiễm độc từ tài khoản của bạn. Nền tảng đe dọa sẽ khóa vĩnh viễn tài khoản và tịch thu số dư hiện có nếu bạn tiếp tục hành vi này.",
+      "options": [
+        {
+          "text": "Tiếp tục xả rác vào hệ thống! Nếu tôi chết, AI của các người cũng phải ngu đi một chút!",
+          "next_node_id": "ending_data_martyr",
+          "effects": { "health": -10, "money": -20 }
+        },
+        {
+          "text": "Dừng lại, xin lỗi nền tảng và quay về cày cuốc bù đắp.",
+          "next_node_id": "node_the_loop",
+          "effects": { "identity": -30, "traffic": -20 }
+        }
+      ]
+    },
+    "node_toxic_productivity": {
+      "id": "node_toxic_productivity",
+      "speaker": "PLAYER",
+      "text": "Mình là CEO của chính mình! Phải nỗ lực 200%. Bạn bè rủ đi cà phê? Không, thời gian là tiền bạc. Mình đang xây dựng đế chế cá nhân, ai không chịu nổi áp lực thì là do họ yếu kém, không đủ khát khao!",
+      "options": [
+        {
+          "text": "Tăng liều lượng thực phẩm chức năng, nén cơn đau dạ dày để chạy nốt 3 project cuối tuần. 'Thành công không đến với kẻ lười biếng!'",
+          "next_node_id": "ending_self_exploitation",
+          "effects": { "health": -40, "identity": -20 }
+        },
+        {
+          "text": "Chợt nhận ra mình đang tự hủy hoại bản thân vì những con số vô nghĩa. Tắt máy và tìm lối thoát.",
+          "next_node_id": "node_off_grid_escape",
+          "effects": { "health": 10, "freedom": 20, "money": -20 }
+        }
+      ]
+    },
+    "node_platform_coop": {
+      "id": "node_platform_coop",
+      "speaker": "UNION",
+      "text": "Dự án Hợp tác xã số 'Freelance DAO' ra mắt. Không có CEO ăn chênh lệch, thuật toán phân bổ hoàn toàn minh bạch (Open-source), và lợi nhuận được chia đều cho những người đóng góp.",
+      "options": [
+        {
+          "text": "Xóa app cũ. Dọn nhà sang nền tảng mới do chính chúng ta làm chủ! Một thế giới mới vẫy gọi.",
+          "next_node_id": "ending_platform_coop",
+          "effects": { "freedom": 40, "identity": 40 }
         }
       ]
     },
@@ -225,7 +337,35 @@
     "ending_true_communist": {
       "id": "ending_true_communist",
       "speaker": "SYSTEM",
-      "text": "✊ KẾT CỤC ĐÍCH THỰC: Ý THỨC GIAI CẤP KHỞI SẮC (TRUE ENDING - CLASS CONSCIOUSNESS)\n\nTài khoản cá nhân của bạn bị Nền tảng khóa vĩnh viễn. Bạn mất hết tiền bạc và traffic tích lũy. Nhưng Nghiệp đoàn Số do bạn đồng sáng lập đã thu hút 50.000 thành viên tham gia, buộc các nền tảng phải ngồi vào bàn đàm phán để giảm mức phế và minh bạch hóa thuật toán.\n\nTriết học phản hồi: Chúc mừng! Bạn đã bước qua 'vương quốc của sự tất yếu' để tiến vào 'vương quốc của sự tự do thực sự'. Bằng cách từ bỏ lợi ích cá nhân bị tha hóa, bạn đã đạt được Ý thức giai cấp, biến sức lao động của mình thành động lực giải phóng tập thể khỏi ách thống trị của giai cấp tư sản số.",
+      "text": "✊ KẾT CỤC: ĐÌNH CÔNG SỐ (DIGITAL UNION ENDING)\n\nTài khoản cá nhân của bạn bị Nền tảng khóa vĩnh viễn. Bạn mất hết tiền bạc và traffic tích lũy. Nhưng Nghiệp đoàn Số do bạn đồng sáng lập đã thu hút 50.000 thành viên tham gia, buộc các nền tảng phải ngồi vào bàn đàm phán để giảm mức phế và minh bạch hóa thuật toán.\n\nTriết học phản hồi: Bạn đã bước qua 'vương quốc của sự tất yếu' để tiến vào 'vương quốc của sự tự do thực sự'. Bằng cách từ bỏ lợi ích cá nhân bị tha hóa, bạn đã đạt được Ý thức giai cấp, biến sức lao động của mình thành động lực giải phóng tập thể khỏi ách thống trị của giai cấp tư sản số.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_techno_feudalism": {
+      "id": "ending_techno_feudalism",
+      "speaker": "SYSTEM",
+      "text": "🏰 KẾT CỤC: NÔNG NÔ THỜI KỲ SỐ (TECHNO-FEUDALISM ENDING)\n\nBạn đã mắc kẹt trong vòng xoáy vay nợ để trả phí duy trì tài khoản. Bạn làm việc quần quật chỉ để trả 'địa tô kỹ thuật số' cho nền tảng. Bạn không bao giờ có thể thoát khỏi khoản nợ khổng lồ từ lãi suất ngầm.\n\nTriết học phản hồi: Nền tảng không tạo ra giá trị, chúng chỉ thu 'địa tô'. Bạn tưởng mình làm chủ thời gian và công việc, nhưng thực chất bạn là một 'nông nô số' (digital serf) phải nộp tô để được cày trên mảnh đất của lãnh chúa công nghệ. Bạn đã bị tước đoạt hoàn toàn quyền làm chủ tư liệu sản xuất.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_data_martyr": {
+      "id": "ending_data_martyr",
+      "speaker": "SYSTEM",
+      "text": "☠️ KẾT CỤC: KẺ ĐẦU ĐỘC THUẬT TOÁN (DATA MARTYR ENDING)\n\nTài khoản của bạn bốc hơi vĩnh viễn cùng toàn bộ số tiền chưa rút. Nhưng mô hình AI của nền tảng đã gặp lỗi nghiêm trọng do ăn phải 'dữ liệu độc' từ bạn và nhóm của bạn, làm chậm quá trình tự động hóa.\n\nTriết học phản hồi: Sự bóc lột không hiển hiện chính là việc chiếm đoạt 'lao động dữ liệu vô hình'. Bằng hành động Data Poisoning, bạn đã thực hiện một cuộc 'đình công dữ liệu' - hình thức đấu tranh giai cấp mới nhất chống lại tư bản số, dù bạn phải hi sinh thành tựu cá nhân.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_self_exploitation": {
+      "id": "ending_self_exploitation",
+      "speaker": "SYSTEM",
+      "text": "🎭 KẾT CỤC: KẺ TỰ BÓC LỘT HOÀN HẢO (SELF-EXPLOITATION ENDING)\n\nCơ thể bạn sụp đổ hoàn toàn, nằm viện với hóa đơn y tế khổng lồ. Kỳ lạ thay, bạn không oán trách nền tảng hay xã hội, bạn nằm trên giường bệnh và tự dằn vặt rằng mình 'đã chưa đủ nỗ lực', 'thành công luôn có cái giá của nó'.\n\nTriết học phản hồi: Bạn là nạn nhân của Xã hội thành tích. Hình thức bóc lột tinh vi nhất của chủ nghĩa tư bản là biến nó thành sự tự nguyện. Bạn vừa là ông chủ bóc lột, vừa là nô lệ bị bóc lột của chính mình dưới danh nghĩa 'đam mê' và 'tự do'.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_platform_coop": {
+      "id": "ending_platform_coop",
+      "speaker": "SYSTEM",
+      "text": "🌟 KẾT CỤC VIÊN MÃN: HỢP TÁC XÃ NỀN TẢNG (PLATFORM CO-OP ENDING)\n\nThu nhập không còn 'khủng' như khi được thuật toán tư bản độ, nhưng bạn có thời gian sống, có tiếng nói trong việc vận hành nền tảng, và không ai có quyền khóa tài khoản của bạn vô lý. Mọi người làm việc theo khả năng, hưởng theo đóng góp thực tế.\n\nTriết học phản hồi: Chúc mừng! Bạn đã chạm tới cái đích cuối cùng của đấu tranh giai cấp: Người lao động trực tiếp sở hữu và làm chủ Tư liệu sản xuất (Server, Source code, Thuật toán). Sự tha hóa bị xóa bỏ, lao động trở về đúng ý nghĩa tự do sáng tạo của nó.",
       "options": [],
       "is_ending": true
     }

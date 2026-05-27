@@ -36,11 +36,15 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
       // Kiểm tra điều kiện Kích hoạt Kịch bản Khẩn cấp trước khi chuyển node thông thường
       let finalNextNodeId = next_node_id;
-      if (newStats.health <= 0) finalNextNodeId = 'ending_burnout';
-      else if (newStats.identity <= 0) finalNextNodeId = 'ending_alienation';
-      else if (newStats.money <= 0) finalNextNodeId = 'ending_bankruptcy';
-      else if (newStats.traffic >= 90 && newStats.identity <= 15) finalNextNodeId = 'ending_platform_partner';
-      else if (newStats.freedom >= 90 && newStats.money <= 15) finalNextNodeId = 'ending_off_grid';
+      const isNextNodeEnding = (storyData.nodes as Record<string, any>)[next_node_id]?.is_ending;
+
+      if (!isNextNodeEnding) {
+        if (newStats.health <= 0) finalNextNodeId = 'ending_burnout';
+        else if (newStats.identity <= 0) finalNextNodeId = 'ending_alienation';
+        else if (newStats.money <= 0) finalNextNodeId = 'ending_bankruptcy';
+        else if (newStats.traffic >= 90 && newStats.identity <= 15) finalNextNodeId = 'ending_platform_partner';
+        else if (newStats.freedom >= 90 && newStats.money <= 15) finalNextNodeId = 'ending_off_grid';
+      }
 
       return {
         stats: newStats,
