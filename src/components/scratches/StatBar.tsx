@@ -8,15 +8,16 @@ interface StatBarProps {
 
 export const StatBar: React.FC<StatBarProps> = ({ label, value, color }) => {
   return (
-    <div className="space-y-1">
-      <div className="flex justify-between text-xs font-medium">
-        <span className="text-slate-400">{label}</span>
-        <span className="text-slate-300 font-bold">{value}%</span>
+    <div className="flex-1 min-w-[100px] font-mono">
+      <div className="flex justify-between text-xs md:text-sm mb-1.5 uppercase leading-none">
+        <span className="text-slate-400 truncate mr-1">{label}</span>
+        <span className="text-white">{value}%</span>
       </div>
-      <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-700/50">
+      {/* Khung viền pixel chunky */}
+      <div className="w-full bg-slate-950 h-4 md:h-5 border-2 border-slate-600 p-0.5">
         <div
-          className={`h-full ${color} transition-all duration-500 ease-out`}
-          style={{ width: `${value}%` }}
+          className={`h-full ${color}`}
+          style={{ width: `${value}%`, transition: 'width 0.2s steps(10)' }}
         />
       </div>
     </div>
