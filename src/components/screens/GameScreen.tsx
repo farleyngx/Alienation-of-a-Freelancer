@@ -21,7 +21,7 @@ export const GameScreen: React.FC = () => {
   });
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const { settings, updateSettings, toggleSound, toggleBgm, setSoundVolume, setBgmVolume } = useSettings();
+  const { settings, toggleSound, toggleBgm, setSoundVolume, setBgmVolume } = useSettings();
   const [showSettings, setShowSettings] = useState(false);
 
   const [playHover] = useSound('/assets/audio/hover.mp3', { volume: settings.soundVolume * 0.5, soundEnabled: settings.soundEnabled });
@@ -208,18 +208,6 @@ export const GameScreen: React.FC = () => {
   // Quyết định trạng thái nhân vật dựa trên HP
   const characterMood = state.stats.health < 40 ? 'tired' : 'happy';
 
-  // Lấy màu sắc retro cho loa (speaker)
-  const getSpeakerColor = (speaker: string) => {
-    switch(speaker) {
-      case 'ALGORITHM': return 'text-red-500';
-      case 'PLAYER': return 'text-blue-400';
-      case 'CLIENT': return 'text-yellow-400';
-      case 'UNION': return 'text-green-400';
-      case 'SYSTEM': return 'text-red-600 animate-pulse';
-      case 'PHILOSOPHY': return 'text-fuchsia-400';
-      default: return 'text-gray-300';
-    }
-  };
 
   const getSpeakerName = (speaker: string) => {
     switch(speaker) {

@@ -13,7 +13,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const bootTextRef = useRef<HTMLDivElement>(null);
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const btnRef = useRef<HTMLDivElement>(null);
 
   const { settings } = useSettings();
   const [playClick] = useSound('/assets/audio/click-option.mp3', { volume: 0.3, soundEnabled: settings.soundEnabled });
