@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface StatBarProps {
   label: string;
@@ -8,20 +10,67 @@ interface StatBarProps {
   floatingTexts?: { id: string; amount: number; color: string }[];
 }
 
+const NumberCounter = ({ value }: { value: number }) => {
+  const numRef = useRef<HTMLSpanElement>(null);
+  const prevValue = useRef(value);
+  
+  useGSAP(() => {
+    if (numRef.current) {
+      gsap.fromTo(numRef.current, 
+        { innerHTML: prevValue.current },
+        {
+          innerHTML: value,
+          duration: 0.8,
+          snap: { innerHTML: 1 },
+          ease: 'power3.out'
+        }
+      );
+      prevValue.current = value;
+    }
+  }, [value]);
+
+  return <span ref={numRef}>{prevValue.current}</span>;
+}
+
+const FloatingText = ({ amount, color }: { amount: number, color: string }) => {
+  const elRef = useRef<HTMLDivElement>(null);
+  
+  useGSAP(() => {
+    gsap.fromTo(elRef.current, 
+      { y: 0, opacity: 1, scale: 0.5 },
+      { y: -50, opacity: 0, scale: 1.5, duration: 1.5, ease: 'power2.out' }
+    );
+  }, []);
+  
+  return (
+    <div ref={elRef} className="absolute -top-4 left-1/2 -translate-x-1/2 font-bold text-lg md:text-xl pointer-events-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)] z-50" style={{ color }}>
+      {amount > 0 ? `+${amount}` : amount}
+    </div>
+  );
+};
+
 export const StatBar: React.FC<StatBarProps> = ({ label, value, color, previewEffect, floatingTexts }) => {
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.to(barRef.current, {
+      width: `${Math.max(0, Math.min(100, value))}%`,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  }, [value]);
+
   return (
     <div className="w-full font-mono relative">
       {/* Floating Texts */}
       {floatingTexts?.map(ft => (
-        <div key={ft.id} className="absolute -top-6 left-1/2 -translate-x-1/2 animate-floatUp font-bold text-lg md:text-xl pointer-events-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)] z-50" style={{ color: ft.color }}>
-          {ft.amount > 0 ? `+${ft.amount}` : ft.amount}
-        </div>
+        <FloatingText key={ft.id} amount={ft.amount} color={ft.color} />
       ))}
       
       <div className="flex justify-between items-end h-4 md:h-5 mb-1.5 uppercase leading-none">
         <span className="text-slate-400 truncate mr-1">{label}</span>
         <span className="text-white whitespace-nowrap flex-shrink-0">
-          {value}%
+          <NumberCounter value={value} />%
           {previewEffect ? (
             <span className={`ml-1 text-[10px] md:text-xs ${previewEffect > 0 ? 'text-green-400' : 'text-red-400'} animate-pulse`}>
               ({previewEffect > 0 ? '+' : ''}{previewEffect})
@@ -32,8 +81,8 @@ export const StatBar: React.FC<StatBarProps> = ({ label, value, color, previewEf
       {/* Khung viền pixel chunky */}
       <div className="w-full bg-slate-950 h-4 md:h-5 border-2 border-slate-600 p-0.5 relative">
         <div
-          className={`h-full ${color} relative z-10`}
-          style={{ width: `${Math.max(0, Math.min(100, value))}%`, transition: 'width 0.2s steps(10)' }}
+          ref={barRef}
+          className={`h-full ${color} relative z-10 w-0`}
         />
         
         {/* Preview Tăng */}
