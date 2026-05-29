@@ -121,9 +121,9 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
         </h1>
         <p 
           ref={subtitleRef}
-          className="text-green-200 text-base md:text-2xl lg:text-3xl max-w-2xl lg:max-w-4xl mt-6 lg:mt-8 opacity-0 border-t-2 border-b-2 border-green-900 py-3 lg:py-4 px-6 lg:px-8 bg-slate-900/50 tracking-wide"
+          className="text-green-200 text-base md:text-2xl lg:text-3xl max-w-2xl lg:max-w-4xl mt-6 lg:mt-8 opacity-0 border-t-2 border-b-2 border-green-900 py-3 lg:py-4 px-6 lg:px-8 bg-slate-900/50 tracking-wide leading-relaxed"
         >
-          Sản phẩm sáng tạo môn Kinh tế Chính trị Mác-Lênin (MLN111)
+          Sản phẩm sáng tạo môn<br/>Kinh tế Chính trị Mác-Lênin (MLN111)
         </p>
         
         <div ref={btnRef} className="mt-12 flex flex-col gap-4 opacity-0">

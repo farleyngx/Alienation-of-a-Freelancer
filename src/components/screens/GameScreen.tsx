@@ -27,7 +27,7 @@ export const GameScreen: React.FC = () => {
   const [playHover] = useSound('/assets/audio/hover.mp3', { volume: settings.soundVolume * 0.5, soundEnabled: settings.soundEnabled });
   const [playClickOption] = useSound('/assets/audio/click-option.mp3', { volume: settings.soundVolume * 0.8, soundEnabled: settings.soundEnabled });
   const [playClickTextbox] = useSound('/assets/audio/click-textbox.mp3', { volume: settings.soundVolume * 0.6, soundEnabled: settings.soundEnabled });
-  const [playType] = useSound('/assets/audio/type.mp3', { volume: settings.soundVolume * 0.2, soundEnabled: settings.soundEnabled });
+  const [playType] = useSound('/assets/audio/type.mp3', { volume: settings.soundVolume * 0.7, soundEnabled: settings.soundEnabled });
   
   const [playNormal, { stop: stopNormal }] = useSound('/assets/audio/bgm-normal.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
   const [playIntense, { stop: stopIntense }] = useSound('/assets/audio/bgm-intense.mp3', { volume: settings.bgmVolume * 1.5, loop: true, soundEnabled: settings.bgmEnabled });
@@ -38,7 +38,6 @@ export const GameScreen: React.FC = () => {
   const isEndingEvent = state.currentNodeId.startsWith('ending_') && !state.currentNodeId.includes('philosophy');
   const isEnding = !!currentNode?.is_ending;
   const isPhilosophy = !!currentNode?.next_node_id?.includes('philosophy');
-  const isShaking = isHealthLow && !isEnding && !isPhilosophy && !isEndingEvent;
 
   // Refs for GSAP
   const gameUiRef = useRef<HTMLDivElement>(null);
@@ -293,7 +292,7 @@ export const GameScreen: React.FC = () => {
       <div ref={gameUiRef} className="flex-1 w-full mx-auto flex flex-col min-h-0 relative z-10">
         
         {/* UPPER SECTION: Stats (Left) + Sprite (Right) */}
-        <div className={`flex-1 flex flex-row min-h-0 mb-1.5 md:mb-3 gap-1.5 md:gap-3 ${isShaking ? 'animate-shake' : ''}`}>
+        <div className={`flex-1 flex flex-row min-h-0 mb-1.5 md:mb-3 gap-1.5 md:gap-3`}>
           
           {/* 1. LEFT PANEL: STATS (30%) */}
           <div className="w-[35%] md:w-[30%] flex flex-col justify-start gap-1.5 md:gap-3 lg:gap-4 xl:gap-6 border-4 border-slate-700 p-1.5 md:p-3 lg:p-4 xl:p-6 bg-slate-900 shadow-[4px_4px_0_rgba(0,0,0,1)] font-mono font-bold shrink-0 z-50 overflow-y-auto hide-scrollbar">

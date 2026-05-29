@@ -20,9 +20,9 @@ const NumberCounter = ({ value }: { value: number }) => {
         { innerHTML: prevValue.current },
         {
           innerHTML: value,
-          duration: 0.8,
+          duration: 1.5,
           snap: { innerHTML: 1 },
-          ease: 'power3.out'
+          ease: 'power1.out'
         }
       );
       prevValue.current = value;
@@ -55,13 +55,15 @@ export const StatBar: React.FC<StatBarProps> = ({ label, value, color, previewEf
   useGSAP(() => {
     gsap.to(barRef.current, {
       width: `${Math.max(0, Math.min(100, value))}%`,
-      duration: 0.8,
-      ease: 'power3.out'
+      duration: 1.5,
+      ease: 'power1.out'
     });
   }, [value]);
 
+  const isCritical = value <= 20;
+
   return (
-    <div className="w-full font-mono relative">
+    <div className={`w-full font-mono relative ${isCritical ? 'animate-shake' : ''}`}>
       {/* Floating Texts */}
       {floatingTexts?.map(ft => (
         <FloatingText key={ft.id} amount={ft.amount} color={ft.color} />
