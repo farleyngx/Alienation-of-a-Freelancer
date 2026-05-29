@@ -8,7 +8,10 @@
         {
           "text": "Mở máy tính, đăng ký tài khoản trên Nền Tảng Trung Gian và tìm hợp đồng đầu tiên.",
           "next_node_id": "node_first_job",
-          "effects": { "freedom": 10, "traffic": 10 }
+          "effects": {
+            "freedom": 10,
+            "traffic": 10
+          }
         }
       ]
     },
@@ -20,12 +23,19 @@
         {
           "text": "Chấp nhận. 30% hơi đắt nhưng mình được tự do chọn việc cơ mà!",
           "next_node_id": "node_the_loop",
-          "effects": { "money": 10, "health": -10 }
+          "effects": {
+            "money": 10,
+            "health": -10
+          }
         },
         {
           "text": "Từ chối trả mức phí cắt cổ 30%, tự xách hồ sơ đi gõ cửa từng công ty bên ngoài.",
           "next_node_id": "ending_false_freedom",
-          "effects": { "freedom": 20, "money": -50, "traffic": -50 }
+          "effects": {
+            "freedom": 20,
+            "money": -50,
+            "traffic": -50
+          }
         }
       ]
     },
@@ -37,22 +47,43 @@
         {
           "text": "Cày xuyên đêm. Thuật toán không đợi ai, phải bán sức lao động để tích lũy tiền bạc trước đã!",
           "next_node_id": "node_burnout_choice",
-          "effects": { "money": 25, "health": -30, "traffic": 25, "freedom": -20, "identity": -15 }
+          "effects": {
+            "money": 25,
+            "health": -30,
+            "traffic": 25,
+            "freedom": -20,
+            "identity": -15
+          }
         },
         {
           "text": "Tắt máy đi ngủ. Sức khỏe là trên hết, mình là chủ nhân của máy móc, không phải ngược lại!",
           "next_node_id": "node_punished_by_algo",
-          "effects": { "money": -10, "health": 20, "traffic": -35, "freedom": 15 }
+          "effects": {
+            "money": -10,
+            "health": 20,
+            "traffic": -35,
+            "freedom": 15
+          }
         },
         {
           "text": "Sử dụng công cụ sản xuất hàng loạt (Auto) để làm nhanh cho xong, cốt giữ lấy lượng khách hàng.",
           "next_node_id": "node_ai_cheat",
-          "effects": { "health": 10, "traffic": 20, "identity": -35, "freedom": -10 }
+          "effects": {
+            "health": 10,
+            "traffic": 20,
+            "identity": -35,
+            "freedom": -10
+          }
         },
         {
           "text": "Tự mua khóa học 'Khai phá bản thân'. Thức dậy 4h sáng, làm việc 16 tiếng/ngày, tự đặt chỉ tiêu tàn khốc.",
           "next_node_id": "node_toxic_productivity",
-          "effects": { "money": 30, "health": -20, "freedom": -20, "identity": -10 }
+          "effects": {
+            "money": 30,
+            "health": -20,
+            "freedom": -20,
+            "identity": -10
+          }
         }
       ]
     },
@@ -64,17 +95,27 @@
         {
           "text": "Chấp nhận hạ giá sức lao động xuống 50% và chạy quảng cáo nạp tiền cho Nền tảng để xin lại khách.",
           "next_node_id": "node_client_from_hell",
-          "effects": { "money": -25, "traffic": 40, "identity": -10 }
+          "effects": {
+            "money": -25,
+            "traffic": 40,
+            "identity": -10
+          }
         },
         {
           "text": "Đăng bài lên các diễn đàn cộng đồng, tìm kiếm những người lao động khác xem họ chống lại thuật toán thế nào.",
           "next_node_id": "node_class_consciousness",
-          "effects": { "freedom": 10, "identity": 20 }
+          "effects": {
+            "freedom": 10,
+            "identity": 20
+          }
         },
         {
           "text": "Mua 'Gói Đặc Quyền' với giá 20% thu nhập mỗi tháng nộp cho hệ thống để không bị trừ điểm uy tín nữa.",
           "next_node_id": "node_premium_freelancer",
-          "effects": { "money": -20, "traffic": 50 }
+          "effects": {
+            "money": -20,
+            "traffic": 50
+          }
         }
       ]
     },
@@ -86,12 +127,21 @@
         {
           "text": "Uống cà phê đặc, cắn răng làm tiếp. Đã bước chân vào guồng máy tư bản thì phải theo tới cùng!",
           "next_node_id": "node_client_from_hell",
-          "effects": { "money": 30, "health": -35, "traffic": 30, "identity": -25 }
+          "effects": {
+            "money": 30,
+            "health": -35,
+            "traffic": 30,
+            "identity": -25
+          }
         },
         {
           "text": "Dừng lại một nhịp, trích tiền mua thiết bị đời mới để tăng năng suất hy vọng sẽ nhàn hơn.",
           "next_node_id": "node_ai_shock",
-          "effects": { "money": -30, "health": 15, "freedom": 5 }
+          "effects": {
+            "money": -30,
+            "health": 15,
+            "freedom": 5
+          }
         }
       ]
     },
@@ -103,12 +153,19 @@
         {
           "text": "Đầu tư tiền mua phần mềm che giấu vết tích (Anti-Detect) chuyên nghiệp để lách luật thuật toán. Tốn kém nhưng an toàn.",
           "next_node_id": "node_platform_offer",
-          "effects": { "money": -30, "traffic": 30, "identity": -20 }
+          "effects": {
+            "money": -30,
+            "traffic": 30,
+            "identity": -20
+          }
         },
         {
           "text": "Tiếc tiền, nhắm mắt cho công cụ chạy tiếp và hy vọng Thuật toán sẽ bỏ sót mình.",
           "next_node_id": "node_punished_by_algo",
-          "effects": { "traffic": -40, "money": -15 }
+          "effects": {
+            "traffic": -40,
+            "money": -15
+          }
         }
       ]
     },
@@ -120,17 +177,32 @@
         {
           "text": "Cắn răng thức trắng đêm làm lại. Điểm đánh giá của hệ thống là mạng sống lúc này!",
           "next_node_id": "node_ai_shock",
-          "effects": { "money": 5, "health": -25, "freedom": -15, "identity": -10 }
+          "effects": {
+            "money": 5,
+            "health": -25,
+            "freedom": -15,
+            "identity": -10
+          }
         },
         {
           "text": "Kiên quyết từ chối. Tôi là người lao động có nhân phẩm chứ không phải nô lệ thời gian của tư bản!",
           "next_node_id": "node_the_loop",
-          "effects": { "money": -15, "traffic": -30, "freedom": 15, "identity": 10 }
+          "effects": {
+            "money": -15,
+            "traffic": -30,
+            "freedom": 15,
+            "identity": 10
+          }
         },
         {
           "text": "Thuê bóc lột lại (Outsource) một sinh viên thực tập với giá rẻ mạt để họ làm thay mình.",
           "next_node_id": "node_platform_offer",
-          "effects": { "money": -5, "health": 15, "identity": -25, "freedom": 5 }
+          "effects": {
+            "money": -5,
+            "health": 15,
+            "identity": -25,
+            "freedom": 5
+          }
         }
       ]
     },
@@ -142,17 +214,27 @@
         {
           "text": "Chạy đua vũ trang. Thức đêm ngày học cách điều khiển AI để ép tốc độ làm việc gấp 5 lần, hạ giá cạnh tranh.",
           "next_node_id": "node_platform_offer",
-          "effects": { "health": -30, "traffic": 15, "identity": -20 }
+          "effects": {
+            "health": -30,
+            "traffic": 15,
+            "identity": -20
+          }
         },
         {
           "text": "Kiên trì con đường thủ công, tự tay sáng tạo nghệ thuật đích thực. Từ chối trở thành cái máy bấm nút.",
           "next_node_id": "node_off_grid_escape",
-          "effects": { "money": -30, "traffic": -25, "identity": 30 }
+          "effects": {
+            "money": -30,
+            "traffic": -25,
+            "identity": 30
+          }
         },
         {
           "text": "Phân tích mã nguồn AI. Bạn bàng hoàng phát hiện lý do AI thông minh như vậy là vì chúng đã ăn cắp chính dữ liệu từ sức lao động bao năm qua của bạn.",
           "next_node_id": "node_data_discovery",
-          "effects": { "identity": 10 }
+          "effects": {
+            "identity": 10
+          }
         }
       ]
     },
@@ -164,12 +246,20 @@
         {
           "text": "Ký hợp đồng! Từ kẻ bị bóc lột, mình sẽ bước lên hàng ngũ trung gian quản lý để cùng hệ thống bòn rút giá trị.",
           "next_node_id": "ending_platform_partner",
-          "effects": { "traffic": 100, "identity": -50, "freedom": -40, "money": 50 }
+          "effects": {
+            "traffic": 100,
+            "identity": -50,
+            "freedom": -40,
+            "money": 50
+          }
         },
         {
           "text": "Từ chối cương quyết. Tôi không thể phản bội lại giai cấp lao động tự do để trở thành tay sai cho cỗ máy.",
           "next_node_id": "node_class_consciousness",
-          "effects": { "identity": 25, "freedom": 15 }
+          "effects": {
+            "identity": 25,
+            "freedom": 15
+          }
         }
       ]
     },
@@ -181,12 +271,20 @@
         {
           "text": "Tắt màn hình, bán hết thiết bị, xách ba lô rời khỏi thành thị để về quê tìm tự do nguyên thủy.",
           "next_node_id": "ending_off_grid",
-          "effects": { "freedom": 100, "money": -40, "traffic": -100 }
+          "effects": {
+            "freedom": 100,
+            "money": -40,
+            "traffic": -100
+          }
         },
         {
           "text": "Không thể từ bỏ ánh hào quang đô thị. Cắn răng bật máy lên và tiếp tục lặn ngụp tìm hợp đồng.",
           "next_node_id": "node_the_loop",
-          "effects": { "money": 10, "health": -15, "freedom": -5 }
+          "effects": {
+            "money": 10,
+            "health": -15,
+            "freedom": -5
+          }
         }
       ]
     },
@@ -203,12 +301,19 @@
         {
           "text": "Đình công là chưa đủ! Kêu gọi các kỹ sư cùng xây dựng một Nền Tảng Công Cộng do chính người lao động làm chủ tư liệu sản xuất.",
           "next_node_id": "node_platform_coop",
-          "effects": { "identity": 30, "money": -30, "freedom": 20 }
+          "effects": {
+            "identity": 30,
+            "money": -30,
+            "freedom": 20
+          }
         },
         {
           "text": "Thôi, làm loạn rủi ro quá. Mình rút lui, ngoan ngoãn quay lại cày cuốc âm thầm kiếm cơm qua ngày.",
           "next_node_id": "node_the_loop",
-          "effects": { "identity": -20, "freedom": -20 }
+          "effects": {
+            "identity": -20,
+            "freedom": -20
+          }
         }
       ]
     },
@@ -220,12 +325,19 @@
         {
           "text": "Đâm lao phải theo lao. Cày cuốc điên cuồng bằng mọi giá để đủ tiền nộp 'Địa tô' cho hệ thống hàng tháng.",
           "next_node_id": "node_techno_feudalism_loop",
-          "effects": { "money": 10, "health": -20, "freedom": -20 }
+          "effects": {
+            "money": 10,
+            "health": -20,
+            "freedom": -20
+          }
         },
         {
           "text": "Nhận ra mình đang tự nguyện nộp tô làm nô lệ. Lập tức bấm 'Hủy Gói', chấp nhận việc hệ thống xóa bỏ mọi lượng khách hàng của mình.",
           "next_node_id": "node_punished_by_algo",
-          "effects": { "traffic": -80, "freedom": 10 }
+          "effects": {
+            "traffic": -80,
+            "freedom": 10
+          }
         }
       ]
     },
@@ -237,7 +349,11 @@
         {
           "text": "Vay nợ hệ thống để trả tiền nộp tô cho chính hệ thống. Chính thức rơi vào vòng xoáy nợ nần không đáy.",
           "next_node_id": "ending_techno_feudalism",
-          "effects": { "money": -30, "freedom": -30, "identity": -10 }
+          "effects": {
+            "money": -30,
+            "freedom": -30,
+            "identity": -10
+          }
         }
       ]
     },
@@ -249,12 +365,18 @@
         {
           "text": "Thực hiện 'Đình công dữ liệu'! Cố tình đưa vào các sản phẩm chứa mã độc, thông tin sai lệch để làm hỏng thuật toán học máy.",
           "next_node_id": "node_data_strike",
-          "effects": { "identity": 30, "traffic": -30 }
+          "effects": {
+            "identity": 30,
+            "traffic": -30
+          }
         },
         {
           "text": "Chấp nhận sự thật cay đắng. Nền tảng nắm giữ Tư liệu sản xuất, mình chỉ là kiến. Học cách phục vụ lại cỗ máy AI đó để kiếm sống.",
           "next_node_id": "node_platform_offer",
-          "effects": { "identity": -20, "traffic": 20 }
+          "effects": {
+            "identity": -20,
+            "traffic": 20
+          }
         }
       ]
     },
@@ -266,12 +388,18 @@
         {
           "text": "Tiếp tục xả rác vào hệ thống! 'Giai cấp vô sản không có gì để mất ngoài những xiềng xích'!",
           "next_node_id": "ending_data_martyr",
-          "effects": { "health": -10, "money": -20 }
+          "effects": {
+            "health": -10,
+            "money": -20
+          }
         },
         {
           "text": "Sợ mất số tiền xương máu. Lập tức dừng lại, viết thư xin lỗi hệ thống và cầu xin được cày cuốc bù đắp.",
           "next_node_id": "node_the_loop",
-          "effects": { "identity": -30, "traffic": -20 }
+          "effects": {
+            "identity": -30,
+            "traffic": -20
+          }
         }
       ]
     },
@@ -283,12 +411,19 @@
         {
           "text": "Uống 3 lon tăng lực, nén cơn đau dạ dày để chạy nốt 3 hợp đồng cuối tuần. Trở thành Kẻ Tự Bóc Lột Hoàn Hảo.",
           "next_node_id": "ending_self_exploitation",
-          "effects": { "health": -40, "identity": -20 }
+          "effects": {
+            "health": -40,
+            "identity": -20
+          }
         },
         {
           "text": "Nhìn chằm chằm vào màn hình, tự hỏi: 'Cuộc đua vô tận này dẫn về đâu?'. Cụp màn hình xuống, từ bỏ sự điên rồ này.",
           "next_node_id": "node_off_grid_escape",
-          "effects": { "health": 10, "freedom": 20, "money": -20 }
+          "effects": {
+            "health": 10,
+            "freedom": 20,
+            "money": -20
+          }
         }
       ]
     },
@@ -300,84 +435,285 @@
         {
           "text": "Xóa Nền tảng Tư bản. Chuyển sang Nền tảng Công cộng do chính chúng ta làm chủ! Một thế giới mới vẫy gọi.",
           "next_node_id": "ending_platform_coop",
-          "effects": { "freedom": 40, "identity": 40 }
+          "effects": {
+            "freedom": 40,
+            "identity": 40
+          }
         }
       ]
     },
     "ending_burnout": {
       "id": "ending_burnout",
       "speaker": "SYSTEM",
-      "text": "🚨 KẾT CỤC: SỰ SỤP ĐỔ CỦA SỨC LAO ĐỘNG (BURNOUT ENDING)\n\nSức khỏe (HP) của bạn đã cạn kiệt. Bạn gục ngã ngay trên bàn làm việc vào lúc 3 giờ sáng. Tiền trong tài khoản bị hệ thống phong tỏa.\n\n[Góc nhìn Triết học] Bạn là nạn nhân tiêu biểu của việc tư bản vắt kiệt sức lao động dưới lớp vỏ bọc 'tự do ý chí'. Bạn lầm tưởng mình đang làm chủ thời gian, nhưng thực chất đã trở thành một 'linh kiện sinh học' dùng một lần để phục vụ cho sự tăng trưởng vô hạn của nền tảng.",
-      "options": [],
-      "is_ending": true
+      "text": "🚨 KẾT CỤC: SỰ SỤP ĐỔ CỦA SỨC LAO ĐỘNG (BURNOUT ENDING)\n\nSức khỏe (HP) của bạn đã cạn kiệt. Bạn gục ngã ngay trên bàn làm việc vào lúc 3 giờ sáng. Tiền trong tài khoản bị hệ thống phong tỏa.\n\n[Điều kiện đạt được: Sức khỏe (HP) cạn kiệt]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_burnout_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_alienation": {
       "id": "ending_alienation",
       "speaker": "SYSTEM",
-      "text": "🤖 KẾT CỤC: SỰ THA HÓA HOÀN TOÀN (ALIENATION ENDING)\n\nBản sắc cá nhân (IDENTITY) đã biến mất. Bạn siêu giàu, nhưng bạn không còn là một con người sống động nữa. Bạn đã trở thành một cỗ máy tự động, sản xuất các nội dung rỗng tuếch chỉ để phù hợp với thông số của thuật toán.\n\n[Góc nhìn Triết học] Sự tha hóa lao động (Karl Marx) đã đạt đỉnh: Sản phẩm bạn làm ra không thuộc về bạn, hoạt động lao động trở thành cưỡng bức mưu sinh, và cuối cùng bạn bị tha hóa khỏi chính bản chất người (human nature) của mình.",
-      "options": [],
-      "is_ending": true
+      "text": "🤖 KẾT CỤC: SỰ THA HÓA HOÀN TOÀN (ALIENATION ENDING)\n\nBản sắc cá nhân (IDENTITY) đã biến mất. Bạn siêu giàu, nhưng bạn không còn là một con người sống động nữa. Bạn đã trở thành một cỗ máy tự động, sản xuất các nội dung rỗng tuếch chỉ để phù hợp với thông số của thuật toán.\n\n[Điều kiện đạt được: Bản sắc cá nhân (IDENTITY) biến mất]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_alienation_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_bankruptcy": {
       "id": "ending_bankruptcy",
       "speaker": "SYSTEM",
-      "text": "💸 KẾT CỤC: BẦN CÙNG HÓA KỶ NGUYÊN SỐ (BANKRUPTCY ENDING)\n\nTiền bạc chạm đáy. Điện bị cắt, mạng bị ngắt. Tài khoản làm việc bị hệ thống vô hiệu hóa do không duy trì được tỷ suất lợi nhuận tối thiểu.\n\n[Góc nhìn Triết học] Trong Chủ nghĩa tư bản, khi người vô sản bị tước đoạt công cụ sản xuất, họ chỉ có một tài sản duy nhất để bán là Sức Lao Động. Một khi không có tiền để tái sản xuất sức lao động (mua thức ăn, trả tiền mạng), sự 'tự do' chỉ còn là ảo tưởng trừu tượng.",
-      "options": [],
-      "is_ending": true
+      "text": "💸 KẾT CỤC: BẦN CÙNG HÓA KỶ NGUYÊN SỐ (BANKRUPTCY ENDING)\n\nTiền bạc chạm đáy. Điện bị cắt, mạng bị ngắt. Tài khoản làm việc bị hệ thống vô hiệu hóa do không duy trì được tỷ suất lợi nhuận tối thiểu.\n\n[Điều kiện đạt được: Tiền bạc (MONEY) chạm đáy]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_bankruptcy_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_platform_partner": {
       "id": "ending_platform_partner",
       "speaker": "SYSTEM",
-      "text": "😈 KẾT CỤC: TRỞ THÀNH TAY SAI TƯ BẢN (PLATFORM PARTNER ENDING)\n\nBạn đã ký khế ước. Trở nên giàu sang tột độ nhờ việc ăn hoa hồng trên mồ hôi của hàng nghìn freelancer cấp dưới. Bạn đứng ra tổ chức các khóa học đi truyền bá hệ tư tưởng bóc lột.\n\n[Góc nhìn Triết học] Bạn đã rời bỏ giai cấp vô sản để gia nhập lực lượng trung gian bóc lột. Sự tha hóa cao nhất chính là việc bạn tự nguyện hóa thân thành công cụ đi tha hóa những người đồng cảnh ngộ cũ nhằm duy trì đặc quyền giai cấp mới của mình.",
-      "options": [],
-      "is_ending": true
+      "text": "😈 KẾT CỤC: TRỞ THÀNH TAY SAI TƯ BẢN (PLATFORM PARTNER ENDING)\n\nBạn đã ký khế ước. Trở nên giàu sang tột độ nhờ việc ăn hoa hồng trên mồ hôi của hàng nghìn freelancer cấp dưới. Bạn đứng ra tổ chức các khóa học đi truyền bá hệ tư tưởng bóc lột.\n\n[Điều kiện đạt được: Chấp nhận làm Đại Sứ Nền Tảng]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_platform_partner_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_off_grid": {
       "id": "ending_off_grid",
       "speaker": "SYSTEM",
-      "text": "🏡 KẾT CỤC: LỘI NGƯỢC DÒNG VĂN MINH (OFF-GRID ENDING)\n\nBạn ngắt mạng, về quê trồng rau nuôi cá. Nghèo vật chất nhưng thanh thản tâm hồn. Không còn bất kỳ thuật toán nào theo dõi bạn nữa.\n\n[Góc nhìn Triết học] Bạn đã lựa chọn lối thoát cá nhân. Tuy bảo vệ được cái tôi, nhưng hành động trốn chạy này không giải quyết được mâu thuẫn đối kháng cốt lõi giữa Tư bản và Lao động trên quy mô xã hội. Nó là sự chối bỏ phát triển của lực lượng sản xuất.",
-      "options": [],
-      "is_ending": true
+      "text": "🏡 KẾT CỤC: LỘI NGƯỢC DÒNG VĂN MINH (OFF-GRID ENDING)\n\nBạn ngắt mạng, về quê trồng rau nuôi cá. Nghèo vật chất nhưng thanh thản tâm hồn. Không còn bất kỳ thuật toán nào theo dõi bạn nữa.\n\n[Điều kiện đạt được: Xóa app, rời bỏ thành thị]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_off_grid_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_true_communist": {
       "id": "ending_true_communist",
       "speaker": "SYSTEM",
-      "text": "✊ KẾT CỤC: THỨC TỈNH Ý THỨC GIAI CẤP (DIGITAL UNION ENDING)\n\nBạn mất trắng tài khoản, nhưng Nghiệp đoàn Số do bạn khởi xướng đã khiến toàn bộ nền tảng tê liệt, buộc giới chủ phải đàm phán giảm mức thu tô và công khai thuật toán.\n\n[Góc nhìn Triết học] Bạn đã hoàn tất bước nhảy vọt từ 'Giai cấp tự nó' thành 'Giai cấp vì nó'. Ý thức giai cấp đã biến sức mạnh cá nhân thành động lực cách mạng tập thể, mở ra khả năng cải tạo các quan hệ sản xuất bất công trong lòng tư bản số.",
-      "options": [],
-      "is_ending": true
+      "text": "✊ KẾT CỤC: THỨC TỈNH Ý THỨC GIAI CẤP (DIGITAL UNION ENDING)\n\nBạn mất trắng tài khoản, nhưng Nghiệp đoàn Số do bạn khởi xướng đã khiến toàn bộ nền tảng tê liệt, buộc giới chủ phải đàm phán giảm mức thu tô và công khai thuật toán.\n\n[Điều kiện đạt được: Kêu gọi tổng đình công Nghiệp đoàn Số]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_true_communist_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_techno_feudalism": {
       "id": "ending_techno_feudalism",
       "speaker": "SYSTEM",
-      "text": "🏰 KẾT CỤC: NÔNG NÔ THỜI KỲ SỐ (TECHNO-FEUDALISM ENDING)\n\nBạn mắc kẹt trong nợ nần vô tận. Bạn làm việc 20 tiếng/ngày chỉ để trả lãi vay và tiền duy trì tài khoản hàng tháng. Tư liệu sản xuất thuộc về giới chủ, bạn chỉ được phép cày cuốc trên mảnh đất ảo của họ.\n\n[Góc nhìn Triết học] Phương thức sản xuất đã thoái lui về hình thái Phong kiến Kỹ thuật số. Giới chủ công nghệ không trực tiếp sản xuất hàng hóa, chúng độc quyền Nền tảng và thu 'Địa tô' hệt như lãnh chúa bóc lột nông nô ngày xưa.",
-      "options": [],
-      "is_ending": true
+      "text": "🏰 KẾT CỤC: NÔNG NÔ THỜI KỲ SỐ (TECHNO-FEUDALISM ENDING)\n\nBạn mắc kẹt trong nợ nần vô tận. Bạn làm việc 20 tiếng/ngày chỉ để trả lãi vay và tiền duy trì tài khoản hàng tháng. Tư liệu sản xuất thuộc về giới chủ, bạn chỉ được phép cày cuốc trên mảnh đất ảo của họ.\n\n[Điều kiện đạt được: Mắc kẹt trong vòng lặp trả Địa tô]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_techno_feudalism_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_data_martyr": {
       "id": "ending_data_martyr",
       "speaker": "SYSTEM",
-      "text": "☠️ KẾT CỤC: TỬ ĐẠO DỮ LIỆU (DATA MARTYR ENDING)\n\nTài khoản bị xóa sổ, nhưng hệ thống AI của nền tảng đã gặp lỗi nghiêm trọng, trì hoãn âm mưu tự động hóa để sa thải người lao động.\n\n[Góc nhìn Triết học] Hình thức đấu tranh giai cấp mới: Phá hoại tư liệu sản xuất vô hình (dữ liệu). Bạn hiểu rõ rằng dữ liệu là cốt lõi của giá trị thặng dư trong kỷ nguyên AI. Sự hy sinh của bạn là đòn giáng trực tiếp vào trung tâm quyền lực của Tư bản nền tảng.",
-      "options": [],
-      "is_ending": true
+      "text": "☠️ KẾT CỤC: TỬ ĐẠO DỮ LIỆU (DATA MARTYR ENDING)\n\nTài khoản bị xóa sổ, nhưng hệ thống AI của nền tảng đã gặp lỗi nghiêm trọng, trì hoãn âm mưu tự động hóa để sa thải người lao động.\n\n[Điều kiện đạt được: Thực hiện Đình công Dữ liệu]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_data_martyr_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_self_exploitation": {
       "id": "ending_self_exploitation",
       "speaker": "SYSTEM",
-      "text": "🎭 KẾT CỤC: KẺ TỰ BÓC LỘT HOÀN HẢO (SELF-EXPLOITATION ENDING)\n\nCơ thể bạn gục ngã trên giường bệnh, nhưng não bộ vẫn tự dằn vặt: 'Chỉ tại mình chưa đủ nỗ lực, thành công luôn có cái giá của nó'.\n\n[Góc nhìn Triết học] Sự bóc lột tinh vi và hoàn hảo nhất là khi người lao động tự nguyện đóng cả hai vai: vừa là ông chủ bóc lột, vừa là nô lệ ngoan ngoãn bị bóc lột dưới ảo vọng của 'đam mê' và 'khát vọng'.",
-      "options": [],
-      "is_ending": true
+      "text": "🎭 KẾT CỤC: KẺ TỰ BÓC LỘT HOÀN HẢO (SELF-EXPLOITATION ENDING)\n\nCơ thể bạn gục ngã trên giường bệnh, nhưng não bộ vẫn tự dằn vặt: 'Chỉ tại mình chưa đủ nỗ lực, thành công luôn có cái giá của nó'.\n\n[Điều kiện đạt được: Trở thành Kẻ Tự Bóc Lột Hoàn Hảo]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_self_exploitation_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_platform_coop": {
       "id": "ending_platform_coop",
       "speaker": "SYSTEM",
-      "text": "🌟 KẾT CỤC TỐI THƯỢNG: CỘNG ĐỒNG SỞ HỮU CHUNG (PLATFORM CO-OP ENDING)\n\nNền tảng mới vận hành trơn tru. Thu nhập chia đều theo đóng góp. Mọi quyết sách được cộng đồng bầu chọn minh bạch. Bạn được làm việc với đầy đủ phẩm giá.\n\n[Góc nhìn Triết học] Chúc mừng! Đây là hình chiếu thu nhỏ của Chủ nghĩa Cộng sản trong không gian mạng. Khi người lao động trực tiếp sở hữu và quản lý Tư liệu sản xuất chung, sự tha hóa bị xóa bỏ. Lao động trở lại đúng với bản chất tự do và chân chính của loài người.",
-      "options": [],
-      "is_ending": true
+      "text": "🌟 KẾT CỤC TỐI THƯỢNG: CỘNG ĐỒNG SỞ HỮU CHUNG (PLATFORM CO-OP ENDING)\n\nNền tảng mới vận hành trơn tru. Thu nhập chia đều theo đóng góp. Mọi quyết sách được cộng đồng bầu chọn minh bạch. Bạn được làm việc với đầy đủ phẩm giá.\n\n[Điều kiện đạt được: Xây dựng Nền tảng Công cộng]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_platform_coop_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
     },
     "ending_false_freedom": {
       "id": "ending_false_freedom",
       "speaker": "SYSTEM",
-      "text": "🏚️ KẾT CỤC: ẢO TƯỞNG TỰ DO (FALSE FREEDOM ENDING)\n\nBạn từ chối tham gia các Nền Tảng vì mức phí môi giới quá đắt, nghĩ rằng mình có thể tự tìm khách ngoài đời thực. Tuy nhiên, mọi khách hàng đều đã bị các nền tảng thâu tóm độc quyền. Bạn nhanh chóng trắng tay.\n\n[Góc nhìn Triết học MLN111] 'Tự do' không tồn tại bên ngoài các quan hệ sản xuất thực tế. Trong Chủ nghĩa tư bản độc quyền, khi giới chủ đã thâu tóm mọi phương tiện phân phối, cá nhân không thể tự tồn tại bằng lao động đơn lẻ mà buộc phải bán mình vào guồng máy.",
+      "text": "🏚️ KẾT CỤC: ẢO TƯỞNG TỰ DO (FALSE FREEDOM ENDING)\n\nBạn từ chối tham gia các Nền Tảng vì mức phí môi giới quá đắt, nghĩ rằng mình có thể tự tìm khách ngoài đời thực. Tuy nhiên, mọi khách hàng đều đã bị các nền tảng thâu tóm độc quyền. Bạn nhanh chóng trắng tay.\n\n[Điều kiện đạt được: Từ chối mọi nền tảng trung gian từ đầu]",
+      "options": [
+        {
+          "text": "Đọc Phân tích Triết học",
+          "next_node_id": "ending_false_freedom_philosophy",
+          "effects": {}
+        },
+        {
+          "text": "> CHƠI LẠI TỪ ĐẦU",
+          "next_node_id": "RESET",
+          "effects": {}
+        }
+      ],
+      "is_ending": false
+    },
+    "ending_burnout_philosophy": {
+      "id": "ending_burnout_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Bạn là nạn nhân tiêu biểu của việc tư bản vắt kiệt sức lao động dưới lớp vỏ bọc 'tự do ý chí'. Bạn lầm tưởng mình đang làm chủ thời gian, nhưng thực chất đã trở thành một 'linh kiện sinh học' dùng một lần để phục vụ cho sự tăng trưởng vô hạn của nền tảng.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_alienation_philosophy": {
+      "id": "ending_alienation_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Sự tha hóa lao động (Karl Marx) đã đạt đỉnh: Sản phẩm bạn làm ra không thuộc về bạn, hoạt động lao động trở thành cưỡng bức mưu sinh, và cuối cùng bạn bị tha hóa khỏi chính bản chất người (human nature) của mình.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_bankruptcy_philosophy": {
+      "id": "ending_bankruptcy_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Trong Chủ nghĩa tư bản, khi người vô sản bị tước đoạt công cụ sản xuất, họ chỉ có một tài sản duy nhất để bán là Sức Lao Động. Một khi không có tiền để tái sản xuất sức lao động (mua thức ăn, trả tiền mạng), sự 'tự do' chỉ còn là ảo tưởng trừu tượng.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_platform_partner_philosophy": {
+      "id": "ending_platform_partner_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Bạn đã rời bỏ giai cấp vô sản để gia nhập lực lượng trung gian bóc lột. Sự tha hóa cao nhất chính là việc bạn tự nguyện hóa thân thành công cụ đi tha hóa những người đồng cảnh ngộ cũ nhằm duy trì đặc quyền giai cấp mới của mình.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_off_grid_philosophy": {
+      "id": "ending_off_grid_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Bạn đã lựa chọn lối thoát cá nhân. Tuy bảo vệ được cái tôi, nhưng hành động trốn chạy này không giải quyết được mâu thuẫn đối kháng cốt lõi giữa Tư bản và Lao động trên quy mô xã hội. Nó là sự chối bỏ phát triển của lực lượng sản xuất.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_true_communist_philosophy": {
+      "id": "ending_true_communist_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Bạn đã hoàn tất bước nhảy vọt từ 'Giai cấp tự nó' thành 'Giai cấp vì nó'. Ý thức giai cấp đã biến sức mạnh cá nhân thành động lực cách mạng tập thể, mở ra khả năng cải tạo các quan hệ sản xuất bất công trong lòng tư bản số.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_techno_feudalism_philosophy": {
+      "id": "ending_techno_feudalism_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Phương thức sản xuất đã thoái lui về hình thái Phong kiến Kỹ thuật số. Giới chủ công nghệ không trực tiếp sản xuất hàng hóa, chúng độc quyền Nền tảng và thu 'Địa tô' hệt như lãnh chúa bóc lột nông nô ngày xưa.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_data_martyr_philosophy": {
+      "id": "ending_data_martyr_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Hình thức đấu tranh giai cấp mới: Phá hoại tư liệu sản xuất vô hình (dữ liệu). Bạn hiểu rõ rằng dữ liệu là cốt lõi của giá trị thặng dư trong kỷ nguyên AI. Sự hy sinh của bạn là đòn giáng trực tiếp vào trung tâm quyền lực của Tư bản nền tảng.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_self_exploitation_philosophy": {
+      "id": "ending_self_exploitation_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Sự bóc lột tinh vi và hoàn hảo nhất là khi người lao động tự nguyện đóng cả hai vai: vừa là ông chủ bóc lột, vừa là nô lệ ngoan ngoãn bị bóc lột dưới ảo vọng của 'đam mê' và 'khát vọng'.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_platform_coop_philosophy": {
+      "id": "ending_platform_coop_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "Chúc mừng! Đây là hình chiếu thu nhỏ của Chủ nghĩa Cộng sản trong không gian mạng. Khi người lao động trực tiếp sở hữu và quản lý Tư liệu sản xuất chung, sự tha hóa bị xóa bỏ. Lao động trở lại đúng với bản chất tự do và chân chính của loài người.",
+      "options": [],
+      "is_ending": true
+    },
+    "ending_false_freedom_philosophy": {
+      "id": "ending_false_freedom_philosophy",
+      "speaker": "PHILOSOPHY",
+      "text": "'Tự do' không tồn tại bên ngoài các quan hệ sản xuất thực tế. Trong Chủ nghĩa tư bản độc quyền, khi giới chủ đã thâu tóm mọi phương tiện phân phối, cá nhân không thể tự tồn tại bằng lao động đơn lẻ mà buộc phải bán mình vào guồng máy.",
       "options": [],
       "is_ending": true
     }
