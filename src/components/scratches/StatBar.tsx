@@ -10,7 +10,7 @@ interface StatBarProps {
 
 export const StatBar: React.FC<StatBarProps> = ({ label, value, color, previewEffect, floatingTexts }) => {
   return (
-    <div className="flex-1 min-w-[100px] font-mono relative">
+    <div className="w-full font-mono relative">
       {/* Floating Texts */}
       {floatingTexts?.map(ft => (
         <div key={ft.id} className="absolute -top-6 left-1/2 -translate-x-1/2 animate-floatUp font-bold text-lg md:text-xl pointer-events-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)] z-50" style={{ color: ft.color }}>
@@ -18,9 +18,9 @@ export const StatBar: React.FC<StatBarProps> = ({ label, value, color, previewEf
         </div>
       ))}
       
-      <div className="flex justify-between text-xs md:text-sm mb-1.5 uppercase leading-none">
+      <div className="flex justify-between items-end h-4 md:h-5 mb-1.5 uppercase leading-none">
         <span className="text-slate-400 truncate mr-1">{label}</span>
-        <span className="text-white">
+        <span className="text-white whitespace-nowrap flex-shrink-0">
           {value}%
           {previewEffect ? (
             <span className={`ml-1 text-[10px] md:text-xs ${previewEffect > 0 ? 'text-green-400' : 'text-red-400'} animate-pulse`}>
