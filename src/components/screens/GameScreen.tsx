@@ -29,11 +29,13 @@ export const GameScreen: React.FC = () => {
   const [playClickTextbox] = useSound('/assets/audio/click-textbox.mp3', { volume: settings.soundVolume * 0.6, soundEnabled: settings.soundEnabled });
   const [playType] = useSound('/assets/audio/type.mp3', { volume: settings.soundVolume * 0.7, soundEnabled: settings.soundEnabled });
   
-  const [playNormal, { stop: stopNormal }] = useSound('/assets/audio/bgm-normal.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
-  const [playIntense, { stop: stopIntense }] = useSound('/assets/audio/bgm-intense.mp3', { volume: settings.bgmVolume * 1.5, loop: true, soundEnabled: settings.bgmEnabled });
-  const [playEnding, { stop: stopEnding }] = useSound('/assets/audio/bgm-ending.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playNormal, { stop: stopNormal, sound: soundNormal }] = useSound('/assets/audio/coding.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playPhilosophy, { stop: stopPhilosophy, sound: soundPhilosophy }] = useSound('/assets/audio/default.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playTragic, { stop: stopTragic, sound: soundTragic }] = useSound('/assets/audio/the_tragic.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playCyber, { stop: stopCyber, sound: soundCyber }] = useSound('/assets/audio/the_cyber_dystopia.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playHarsh, { stop: stopHarsh, sound: soundHarsh }] = useSound('/assets/audio/the_harsh_reality.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [playRev, { stop: stopRev, sound: soundRev }] = useSound('/assets/audio/the_revolutionary.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
 
-  const isHealthLow = state.stats.health < 30;
   // Node là sự kiện kết thúc (VD: ending_burnout) nhưng KHÔNG phải là node giải thích triết học
   const isEndingEvent = state.currentNodeId.startsWith('ending_') && !state.currentNodeId.includes('philosophy');
   const isEnding = !!currentNode?.is_ending;
@@ -73,32 +75,50 @@ export const GameScreen: React.FC = () => {
     }
   }, [isEndingEvent, state.currentNodeId]);
 
-  // BGM Logic
+
+  // BGM Logic dựa trên từng kết cục cụ thể
+  const currentBgmType = useRef('none');
+
+  const stopAllBGM = () => {
+    stopNormal();
+    stopPhilosophy();
+    stopTragic();
+    stopCyber();
+    stopHarsh();
+    stopRev();
+  };
+
+  const getEndingType = (nodeId: string) => {
+     if (nodeId.includes('philosophy')) return 'philosophy';
+     
+     const baseId = nodeId;
+     if (['ending_burnout', 'ending_self_exploitation', 'ending_techno_feudalism'].includes(baseId)) return 'tragic';
+     if (['ending_alienation', 'ending_platform_partner'].includes(baseId)) return 'cyber';
+     if (['ending_bankruptcy', 'ending_false_freedom', 'ending_off_grid'].includes(baseId)) return 'harsh';
+     if (['ending_true_communist', 'ending_data_martyr', 'ending_platform_coop'].includes(baseId)) return 'rev';
+     return 'normal';
+  };
+
   useEffect(() => {
-    let targetBgm: 'none' | 'normal' | 'intense' | 'ending' = 'normal';
-    
-    if (!settings.bgmEnabled) {
-      targetBgm = 'none';
-    } else if (isEndingEvent || isEnding || isPhilosophy) {
-      targetBgm = 'ending';
-    } else if (isHealthLow && !isPhilosophy) {
-      targetBgm = 'intense';
+    const intendedType = settings.bgmEnabled ? getEndingType(state.currentNodeId) : 'none';
+
+    if (currentBgmType.current !== intendedType) {
+      stopAllBGM();
+      currentBgmType.current = intendedType;
     }
 
-    stopNormal();
-    stopIntense();
-    stopEnding();
-
-    if (targetBgm === 'normal') playNormal();
-    if (targetBgm === 'intense') playIntense();
-    if (targetBgm === 'ending') playEnding();
-
-    return () => {
-      stopNormal();
-      stopIntense();
-      stopEnding();
-    };
-  }, [isHealthLow, isEndingEvent, isEnding, isPhilosophy, settings.bgmEnabled, playNormal, playIntense, playEnding, stopNormal, stopIntense, stopEnding]);
+    // Tự động phát khi audio đã tải xong (fix lỗi không phát lần đầu)
+    if (intendedType === 'normal' && soundNormal && !soundNormal.playing()) playNormal();
+    else if (intendedType === 'philosophy' && soundPhilosophy && !soundPhilosophy.playing()) playPhilosophy();
+    else if (intendedType === 'tragic' && soundTragic && !soundTragic.playing()) playTragic();
+    else if (intendedType === 'cyber' && soundCyber && !soundCyber.playing()) playCyber();
+    else if (intendedType === 'harsh' && soundHarsh && !soundHarsh.playing()) playHarsh();
+    else if (intendedType === 'rev' && soundRev && !soundRev.playing()) playRev();
+    
+  }, [
+    state.currentNodeId, settings.bgmEnabled, 
+    soundNormal, soundPhilosophy, soundTragic, soundCyber, soundHarsh, soundRev
+  ]);
 
   const splitIntoPages = (text: string, maxLength: number = 300) => {
     const sentences = text.match(/[^.!?]+[.!?]*\s*/g)?.filter(s => s.trim().length > 0) || [text];
@@ -233,15 +253,12 @@ export const GameScreen: React.FC = () => {
     <div className="h-screen overflow-hidden bg-[#0a0a0c] text-white p-1.5 md:p-4 flex flex-col selection:bg-green-500 selection:text-black">
       
       {/* Settings UI */}
-      <button 
-        onClick={() => {
-          setShowSettings(!showSettings);
-          playClickOption();
-        }} 
-        className="absolute top-2 right-2 md:top-4 md:right-4 z-50 text-slate-500 hover:text-white transition-colors p-2 bg-slate-900 border-2 border-slate-700 shadow-[2px_2px_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
-      >
-        <span className="text-xl">⚙️</span>
-      </button>
+        <button 
+          onClick={() => { setShowSettings(!showSettings); playClickOption(); }}
+          className="absolute top-2 right-2 md:top-4 md:right-4 z-50 p-2 bg-slate-900 border-2 border-slate-600 hover:bg-slate-800 hover:border-green-400 transition-colors shadow-[4px_4px_0_rgba(0,0,0,1)] flex items-center justify-center group"
+        >
+          <span className="text-xl md:text-2xl group-hover:animate-spin">⚙️</span>
+        </button>
 
       {showSettings && (
         <div className="absolute top-14 right-2 md:top-16 md:right-4 z-50 bg-slate-900 border-4 border-slate-500 p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] flex flex-col gap-4 font-mono w-64 animate-floatUp" style={{animation: 'none'}}>

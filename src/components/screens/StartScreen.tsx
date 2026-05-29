@@ -15,8 +15,18 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
   const bootTextRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
 
-  const { settings } = useSettings();
-  const [playClick] = useSound('/assets/audio/click-option.mp3', { volume: 0.3, soundEnabled: settings.soundEnabled });
+  const { settings, toggleBgm, toggleSound, setBgmVolume, setSoundVolume } = useSettings();
+  const [showSettings, setShowSettings] = useState(false);
+
+  const [playClick] = useSound('/assets/audio/click-option.mp3', { volume: settings.soundVolume * 0.8, soundEnabled: settings.soundEnabled });
+  const [playWaiting, { stop: stopWaiting }] = useSound('/assets/audio/waiting_screen.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+
+  // Phát nhạc chờ khi vào web
+  useEffect(() => {
+    if (settings.bgmEnabled) playWaiting();
+    else stopWaiting();
+    return () => stopWaiting();
+  }, [settings.bgmEnabled, playWaiting, stopWaiting]);
   const [playType] = useSound('/assets/audio/type.mp3', { volume: 0.05, soundEnabled: settings.soundEnabled });
 
   const [hasSave, setHasSave] = useState(false);
@@ -98,7 +108,41 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
       ref={containerRef}
       className="h-screen w-full bg-[#0a0a0c] text-green-500 font-mono flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Scanlines */}
+      {/* SETTINGS MENU (Giống GameScreen) */}
+      <button 
+        onClick={() => { setShowSettings(!showSettings); playClick(); }}
+        className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 md:p-3 bg-slate-900 border-2 border-slate-600 hover:bg-slate-800 hover:border-green-400 transition-colors shadow-[4px_4px_0_rgba(0,0,0,1)] flex items-center justify-center group"
+      >
+        <span className="text-xl md:text-2xl group-hover:animate-spin">⚙️</span>
+      </button>
+
+      {showSettings && (
+        <div className="absolute top-16 right-4 md:top-20 md:right-6 z-50 bg-slate-900 border-4 border-slate-500 p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] flex flex-col gap-4 font-mono w-64 animate-floatUp" style={{animation: 'none'}}>
+          <div className="text-center font-bold text-slate-300 border-b-2 border-slate-700 pb-2">CÀI ĐẶT ÂM THANH</div>
+          
+          <label className="flex flex-col gap-2 p-2">
+            <div className="flex items-center justify-between cursor-pointer hover:bg-slate-800" onClick={() => { toggleBgm(); playClick(); }}>
+              <span className="text-sm text-slate-300">Nhạc nền (BGM)</span>
+              <input type="checkbox" checked={settings.bgmEnabled} readOnly className="w-5 h-5 accent-green-500" />
+            </div>
+            {settings.bgmEnabled && (
+              <input type="range" min="0" max="1" step="0.05" value={settings.bgmVolume} onChange={(e) => setBgmVolume(parseFloat(e.target.value))} className="w-full accent-green-500" />
+            )}
+          </label>
+          
+          <label className="flex flex-col gap-2 p-2">
+            <div className="flex items-center justify-between cursor-pointer hover:bg-slate-800" onClick={() => { toggleSound(); playClick(); }}>
+              <span className="text-sm text-slate-300">Âm thanh (SFX)</span>
+              <input type="checkbox" checked={settings.soundEnabled} readOnly className="w-5 h-5 accent-green-500" />
+            </div>
+            {settings.soundEnabled && (
+              <input type="range" min="0" max="1" step="0.05" value={settings.soundVolume} onChange={(e) => setSoundVolume(parseFloat(e.target.value))} className="w-full accent-green-500" />
+            )}
+          </label>
+        </div>
+      )}
+
+      {/* Tắt Background Blur */}
       <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-30 mix-blend-overlay"></div>
       
       {/* Boot sequence */}
