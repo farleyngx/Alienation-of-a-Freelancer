@@ -74,6 +74,7 @@ export const GameScreen: React.FC = () => {
       setIsTyping(false);
     } else {
       if (currentPageIndex < textPages.length - 1) {
+        setIsTyping(true);
         setCurrentPageIndex(prev => prev + 1);
       }
     }
@@ -189,7 +190,7 @@ export const GameScreen: React.FC = () => {
           
           {/* Lời thoại */}
           <div 
-            className="border-4 border-slate-300 bg-slate-900 p-2 md:p-4 lg:p-6 shadow-[8px_8px_0_rgba(0,0,0,1)] relative shrink-0 cursor-pointer overflow-hidden h-[100px] md:h-[130px] lg:h-[160px] xl:h-[200px]"
+            className="border-4 border-slate-300 bg-slate-900 p-2 md:p-4 lg:p-6 shadow-[8px_8px_0_rgba(0,0,0,1)] relative shrink-0 cursor-pointer overflow-hidden h-[100px] md:h-[130px] lg:h-[160px] xl:h-[200px] select-none"
             onClick={handleBoxClick}
           >
             <div className={`text-[12px] md:text-sm lg:text-base mb-1.5 md:mb-2 lg:mb-4 font-bold uppercase tracking-widest ${getSpeakerColor(currentNode.speaker)} font-mono`}>
@@ -200,13 +201,14 @@ export const GameScreen: React.FC = () => {
               {displayedText}
             </p>
             
-            {/* Nhấp nháy "Tiếp tục" indicator */}
-            {!isTyping && currentPageIndex < textPages.length - 1 && <div className="absolute bottom-2 right-3 text-yellow-400 animate-bounce text-sm">▼</div>}
-            {!isTyping && currentPageIndex === textPages.length - 1 && <div className="absolute bottom-2 right-3 text-green-400 animate-pulse text-[10px]">▼</div>}
+            {/* Indicators */}
+            {!isTyping && currentPageIndex < textPages.length - 1 && <div className="absolute bottom-2 right-3 text-yellow-400 animate-bounce text-[10px] md:text-xs font-bold uppercase tracking-wider">Click để tiếp tục ▼</div>}
+            {!isTyping && currentPageIndex === textPages.length - 1 && <div className="absolute bottom-2 right-3 text-green-400 animate-pulse text-[10px] md:text-xs font-bold uppercase tracking-wider">Lựa chọn ▼</div>}
+            {isTyping && <div className="absolute bottom-2 right-3 text-slate-400 opacity-90 animate-pulse text-[10px] md:text-xs uppercase tracking-wider font-bold">Click để hiện nhanh &gt;&gt;</div>}
           </div>
 
           {/* Lựa chọn (Chỉ hiện khi đã đọc hết các trang text) */}
-          <div className={`${currentNode.options.some((o: any) => o.next_node_id === 'RESET') ? 'flex flex-col md:flex-row' : 'grid ' + (currentNode.is_ending ? 'grid-cols-1' : getGridColsClass(currentNode.options.length))} gap-1.5 md:gap-2 font-mono shrink-0 overflow-y-auto ${(isTyping || currentPageIndex < textPages.length - 1) ? 'invisible pointer-events-none' : 'visible'}`}>
+          <div className={`${currentNode.options.some((o: any) => o.next_node_id === 'RESET') ? 'flex flex-col md:flex-row' : 'grid ' + (currentNode.is_ending ? 'grid-cols-1' : getGridColsClass(currentNode.options.length))} gap-1.5 md:gap-2 font-mono shrink-0 overflow-y-auto overflow-x-hidden hide-scrollbar ${(isTyping || currentPageIndex < textPages.length - 1) ? 'invisible pointer-events-none' : 'visible'}`}>
             {currentNode.is_ending ? (
               <button
                 onClick={resetGame}
