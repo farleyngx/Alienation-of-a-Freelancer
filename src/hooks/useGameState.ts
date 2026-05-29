@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import type { GameState, GameStats, StoryOption } from '../types/game';
 import storyData from '../data/story.json';
 
@@ -59,9 +59,27 @@ function gameReducer(state: GameState, action: GameAction): GameState {
   }
 }
 
+const STORAGE_KEY = 'alienation_save';
+
+function initGameState(initial: GameState): GameState {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to parse save game:', e);
+    }
+  }
+  return initial;
+}
+
 export function useGameState() {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
+  const [state, dispatch] = useReducer(gameReducer, initialState, initGameState);
   
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }, [state]);
+
   const currentNode = (storyData.nodes as Record<string, any>)[state.currentNodeId];
 
   const makeChoice = (option: StoryOption) => {
