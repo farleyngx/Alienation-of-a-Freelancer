@@ -33,15 +33,15 @@
 
 /* 3. Logic cho Nghỉ Việc (Màn hình đầu) */
 .sprite-quit-job {
-  background-size: 400px 1932px; /* 400 x (386 * 5) */
+  background-size: 400px 1800px; /* 400 x (386 * 5) */
   background-repeat: no-repeat;
   will-change: background-position;
-  animation: playQuitJob 2s steps(5) forwards;
+  animation: playQuitJob 10s steps(6) infinite;
 }
 
 @keyframes playQuitJob {
   from { background-position: 0px 0px; }
-  to { background-position: 0px -1932px; }
+  to { background-position: 0px -1800px; }
 }
 
 /* 4. Logic cho Tay sai tư bản (Platform Partner) */
