@@ -54,6 +54,47 @@ const ResetTransition = ({ onComplete, onFadeOutEnd }: { onComplete: () => void,
   );
 };
 
+const EnterTransition = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+    const bars = containerRef.current.querySelectorAll('.enter-bar');
+    const flash = containerRef.current.querySelector('.enter-flash');
+    
+    const tl = gsap.timeline();
+    
+    tl.to(flash, {
+      opacity: 0.8,
+      duration: 0.2,
+      ease: 'power2.inOut',
+      yoyo: true,
+      repeat: 1
+    })
+    .to(bars, {
+      scaleY: 0,
+      transformOrigin: 'bottom',
+      duration: 1.2,
+      stagger: {
+        amount: 0.6,
+        from: 'center'
+      },
+      ease: 'circ.inOut'
+    }, "-=0.1")
+    .to(containerRef.current, { opacity: 0, duration: 0.4, onComplete: () => containerRef.current?.remove() });
+    
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="fixed inset-0 z-[200] flex pointer-events-none overflow-hidden">
+      <div className="enter-flash absolute inset-0 bg-green-400 opacity-0 mix-blend-overlay z-10"></div>
+      {Array.from({ length: 12 }).map((_, i) => (
+        <div key={i} className="enter-bar flex-1 h-full bg-[#0a0a0c] border-x border-green-900/30 z-20" />
+      ))}
+    </div>
+  );
+};
+
 export const GameScreen: React.FC = () => {
   const { state, currentNode, makeChoice, resetGame } = useGameState();
 
@@ -287,7 +328,7 @@ export const GameScreen: React.FC = () => {
 
   return (
     <div className="h-screen overflow-hidden bg-[#0a0a0c] text-white p-1.5 md:p-4 flex flex-col selection:bg-green-500 selection:text-black">
-      
+      <EnterTransition />
       {isResetting && <ResetTransition onComplete={resetGame} onFadeOutEnd={() => setIsResetting(false)} />}
 
       <button 
@@ -432,7 +473,7 @@ export const GameScreen: React.FC = () => {
           <div className={`${currentNode.options.some((o: any) => o.next_node_id === 'RESET') ? 'flex flex-col md:flex-row' : 'grid ' + (currentNode.is_ending ? 'grid-cols-1' : getGridColsClass(currentNode.options.length))} gap-1.5 md:gap-2 font-mono shrink-0 overflow-y-auto overflow-x-hidden hide-scrollbar ${(isTyping || currentPageIndex < textPages.length - 1) ? 'invisible pointer-events-none' : 'visible'}`}>
             {currentNode.is_ending ? (
               <button
-                onClick={resetGame}
+                onClick={() => { playClickOption(); setIsResetting(true); }}
                 className="w-full text-center py-3 px-4 border-4 border-green-500 bg-green-950 text-green-400 hover:bg-green-400 hover:text-black transition-colors shadow-[4px_4px_0_rgba(0,0,0,1)] text-sm font-bold uppercase leading-relaxed active:translate-y-1 active:translate-x-1 active:shadow-none"
               >
                 &gt; CHƠI LẠI TỪ ĐẦU
