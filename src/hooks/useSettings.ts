@@ -13,8 +13,8 @@ export interface GameSettings {
 const defaultSettings: GameSettings = {
   soundEnabled: true,
   bgmEnabled: true,
-  soundVolume: 0.5,
-  bgmVolume: 0.5,
+  soundVolume: 0.4,
+  bgmVolume: 0.4,
   typingSpeed: 20,
 };
 

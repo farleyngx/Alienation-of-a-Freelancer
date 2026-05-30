@@ -7,6 +7,52 @@ import { StatBar } from '../scratches/StatBar';
 import { CharacterSprite } from '../sprite_sheets/CharacterSprite';
 import useSound from 'use-sound';
 import { useSettings } from '../../hooks/useSettings';
+const getEndingColor = (nodeId: string): { text: string, shadow: string, hex: string } => {
+  if (!nodeId) return { text: 'text-red-500', shadow: 'rgba(239, 68, 68, 0.8)', hex: '#ef4444' };
+  
+  if (nodeId.includes('off_grid')) return { text: 'text-emerald-400', shadow: 'rgba(52, 211, 153, 0.8)', hex: '#34d399' };
+  if (nodeId.includes('platform_coop')) return { text: 'text-cyan-400', shadow: 'rgba(34, 211, 238, 0.8)', hex: '#22d3ee' };
+  if (nodeId.includes('true_communist')) return { text: 'text-yellow-400', shadow: 'rgba(250, 204, 21, 0.8)', hex: '#facc15' };
+  if (nodeId.includes('platform_partner')) return { text: 'text-fuchsia-400', shadow: 'rgba(232, 121, 249, 0.8)', hex: '#e879f9' };
+  if (nodeId.includes('data_martyr')) return { text: 'text-purple-400', shadow: 'rgba(192, 132, 252, 0.8)', hex: '#c084fc' };
+  if (nodeId.includes('alienation')) return { text: 'text-slate-300', shadow: 'rgba(203, 213, 225, 0.8)', hex: '#cbd5e1' };
+  
+  return { text: 'text-red-500', shadow: 'rgba(239, 68, 68, 0.8)', hex: '#ef4444' };
+};
+
+
+
+const ResetTransition = ({ onComplete, onFadeOutEnd }: { onComplete: () => void, onFadeOutEnd: () => void }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+    const squares = containerRef.current.children;
+    gsap.set(squares, { scale: 0, backgroundColor: '#0a0a0c' });
+    gsap.to(squares, {
+      scale: 1.05,
+      duration: 0.4,
+      stagger: {
+        grid: [10, 20],
+        from: 'start',
+        axis: 'x',
+        amount: 1.2,
+      },
+      onComplete: () => {
+        onComplete();
+        gsap.to(containerRef.current, { opacity: 0, duration: 0.5, delay: 0.3, onComplete: onFadeOutEnd });
+      }
+    });
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="fixed inset-0 z-[100] grid grid-cols-[repeat(20,minmax(0,1fr))] grid-rows-[repeat(10,minmax(0,1fr))] pointer-events-none">
+      {Array.from({ length: 200 }).map((_, i) => (
+        <div key={i} className="w-full h-full bg-[#0a0a0c] origin-center" />
+      ))}
+    </div>
+  );
+};
 
 export const GameScreen: React.FC = () => {
   const { state, currentNode, makeChoice, resetGame } = useGameState();
@@ -19,6 +65,7 @@ export const GameScreen: React.FC = () => {
   const [floatingTexts, setFloatingTexts] = useState<Record<string, { id: string; amount: number; color: string }[]>>({
     money: [], health: [], freedom: [], traffic: [], identity: []
   });
+  const [isResetting, setIsResetting] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const { settings, toggleSound, toggleBgm, setSoundVolume, setBgmVolume } = useSettings();
@@ -36,12 +83,9 @@ export const GameScreen: React.FC = () => {
   const [playHarsh, { stop: stopHarsh, sound: soundHarsh }] = useSound('/assets/audio/the_harsh_reality.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
   const [playRev, { stop: stopRev, sound: soundRev }] = useSound('/assets/audio/the_revolutionary.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
 
-  // Node là sự kiện kết thúc (VD: ending_burnout) nhưng KHÔNG phải là node giải thích triết học
   const isEndingEvent = state.currentNodeId.startsWith('ending_') && !state.currentNodeId.includes('philosophy');
-  const isEnding = !!currentNode?.is_ending;
-  const isPhilosophy = !!currentNode?.next_node_id?.includes('philosophy');
+  const isPhilosophy = state.currentNodeId.includes('philosophy');
 
-  // Refs for GSAP
   const gameUiRef = useRef<HTMLDivElement>(null);
   const cinematicOverlayRef = useRef<HTMLDivElement>(null);
   const cinematicTitleRef = useRef<HTMLHeadingElement>(null);
@@ -51,21 +95,15 @@ export const GameScreen: React.FC = () => {
     if (isEndingEvent) {
       const tl = gsap.timeline();
       
-      // Khởi tạo trạng thái ban đầu
       gsap.set(gameUiRef.current, { opacity: 0, scale: 0.95 });
       gsap.set(cinematicOverlayRef.current, { display: 'flex', opacity: 1, scale: 1 });
       gsap.set(cinematicTitleRef.current, { opacity: 0, scale: 0.8 });
       gsap.set(cinematicSpriteRef.current, { opacity: 0 });
 
-      // 1. You Died effect (Hiện chữ to giữa màn hình)
       tl.to(cinematicTitleRef.current, { opacity: 1, scale: 1, duration: 2, ease: 'power3.out' });
-      // Hiện sprite lờ mờ phía sau
       tl.to(cinematicSpriteRef.current, { opacity: 0.3, duration: 2 }, "-=1");
 
-      // 2. Match & Move (Crossfade về Normal UI)
-      // Chữ và hình mờ dần và to lên 1 chút tạo cảm giác tan biến
       tl.to(cinematicOverlayRef.current, { opacity: 0, scale: 1.1, duration: 1.5, ease: 'power2.inOut', delay: 2.5 });
-      // GameUI hiện ra
       tl.to(gameUiRef.current, { opacity: 1, scale: 1, duration: 1.5, ease: 'power2.inOut' }, "-=1.5");
       tl.set(cinematicOverlayRef.current, { display: 'none' });
       
@@ -76,7 +114,6 @@ export const GameScreen: React.FC = () => {
   }, [isEndingEvent, state.currentNodeId]);
 
 
-  // BGM Logic dựa trên từng kết cục cụ thể
   const currentBgmType = useRef('none');
 
   const stopAllBGM = () => {
@@ -107,7 +144,6 @@ export const GameScreen: React.FC = () => {
       currentBgmType.current = intendedType;
     }
 
-    // Tự động phát khi audio đã tải xong (fix lỗi không phát lần đầu)
     if (intendedType === 'normal' && soundNormal && !soundNormal.playing()) playNormal();
     else if (intendedType === 'philosophy' && soundPhilosophy && !soundPhilosophy.playing()) playPhilosophy();
     else if (intendedType === 'tragic' && soundTragic && !soundTragic.playing()) playTragic();
@@ -159,7 +195,6 @@ export const GameScreen: React.FC = () => {
     intervalRef.current = setInterval(() => {
       setDisplayedText(text.slice(0, i + 1));
       
-      // Play type sound roughly every 2 characters to avoid overlapping audio issues
       if (i % 2 === 0) playType();
 
       i++;
@@ -191,7 +226,7 @@ export const GameScreen: React.FC = () => {
   const handleChoice = (option: any) => {
     playClickOption();
     if (option.next_node_id === 'RESET') {
-      resetGame();
+      setIsResetting(true);
       return;
     }
 
@@ -200,12 +235,11 @@ export const GameScreen: React.FC = () => {
       const id = Date.now().toString();
       Object.keys(option.effects).forEach(key => {
         const val = option.effects[key];
-        const color = val > 0 ? '#4ade80' : '#f87171'; // green-400 : red-400
+        const color = val > 0 ? '#4ade80' : '#f87171';
         newFloating[key] = [...(newFloating[key] || []), { id: `${key}-${id}`, amount: val, color }];
       });
       setFloatingTexts(newFloating);
       
-      // Cleanup floating text after 1.5s
       setTimeout(() => {
         setFloatingTexts(prev => {
           const cleaned: any = { ...prev };
@@ -225,8 +259,10 @@ export const GameScreen: React.FC = () => {
     return <div className="text-red-500 p-8 font-['Press_Start_2P']">Lỗi kịch bản: Node không tồn tại!</div>;
   }
 
-  // Quyết định trạng thái nhân vật dựa trên HP
-  const characterMood = state.stats.health < 40 ? 'tired' : 'happy';
+  let characterMood: 'happy' | 'tired' | 'quit' = state.stats.health < 40 ? 'tired' : 'happy';
+  if (state.currentNodeId === 'start_node') {
+    characterMood = 'quit';
+  }
 
 
   const getSpeakerName = (speaker: string) => {
@@ -252,8 +288,9 @@ export const GameScreen: React.FC = () => {
   return (
     <div className="h-screen overflow-hidden bg-[#0a0a0c] text-white p-1.5 md:p-4 flex flex-col selection:bg-green-500 selection:text-black">
       
-      {/* Settings UI */}
-        <button 
+      {isResetting && <ResetTransition onComplete={resetGame} onFadeOutEnd={() => setIsResetting(false)} />}
+
+      <button 
           onClick={() => { setShowSettings(!showSettings); playClickOption(); }}
           className="absolute top-2 right-2 md:top-4 md:right-4 z-50 p-2 bg-slate-900 border-2 border-slate-600 hover:bg-slate-800 hover:border-green-400 transition-colors shadow-[4px_4px_0_rgba(0,0,0,1)] flex items-center justify-center group"
         >
@@ -286,20 +323,50 @@ export const GameScreen: React.FC = () => {
         </div>
       )}
 
-      {/* ENDING CINEMATIC VIEW (YOU DIED STYLE) */}
       <div ref={cinematicOverlayRef} className="absolute inset-0 z-[100] hidden flex-col items-center justify-center bg-black overflow-hidden pointer-events-none">
-         <div ref={cinematicSpriteRef} className="absolute w-[600px] h-[400px] opacity-0 blur-sm mix-blend-screen" style={{ backgroundImage: `url(/assets/happy-coding.png)`, backgroundPosition: '-300px 0px', backgroundSize: '1200px 2400px', imageRendering: 'pixelated' }} />
-         <h1 ref={cinematicTitleRef} className="text-4xl md:text-5xl lg:text-7xl font-serif tracking-widest text-center uppercase z-10 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] px-4" style={{ fontFamily: "'Crimson Pro', serif", color: '#dc2626' }}>
-           {(currentNode?.text?.split('\n')[0] || "KẾT CỤC").replace(/^[^a-zA-ZÀ-ỹ0-9]*/, '').trim()}
-         </h1>
+        
+        <div ref={cinematicSpriteRef} className="absolute inset-0 opacity-0 blur-sm mix-blend-screen">
+          {state.currentNodeId.includes('bankruptcy') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/bankrupcy-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('burnout') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/burnout-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('alienation') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/alienation-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('off_grid') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/off-grid-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('true_communist') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/digital-union-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('techno_feudalism') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/techno-feudalism-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('data_martyr') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/data-martyr-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('false_freedom') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/false-freedom-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('platform_partner') && (
+            <div className="absolute inset-0 bg-top" style={{ backgroundImage: "url('/assets/platform-partner-ending.png')", backgroundSize: '100% auto' }}></div>
+          )}
+          {!state.currentNodeId.includes('bankruptcy') && !state.currentNodeId.includes('burnout') && !state.currentNodeId.includes('alienation') && !state.currentNodeId.includes('off_grid') && !state.currentNodeId.includes('true_communist') && !state.currentNodeId.includes('techno_feudalism') && !state.currentNodeId.includes('data_martyr') && !state.currentNodeId.includes('false_freedom') && !state.currentNodeId.includes('platform_partner') && (
+            <div className="absolute w-[600px] h-[400px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ backgroundImage: `url(/assets/happy-coding.png)`, backgroundPosition: '-300px 0px', backgroundSize: '1200px 2400px', imageRendering: 'pixelated' }} />
+          )}
+        </div>
+        
+        <h1 ref={cinematicTitleRef} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-widest text-center cinematic-title relative z-10" style={{ color: getEndingColor(state.currentNodeId).hex, fontFamily: "'Crimson Pro', serif", textShadow: `0 0 20px ${getEndingColor(state.currentNodeId).shadow}, 0 0 10px ${getEndingColor(state.currentNodeId).hex}`, lineHeight: '1.2' }}>
+          {(currentNode?.text?.split('\n')[0] || "KẾT CỤC").replace(/^[^a-zA-ZÀ-ỹ0-9]*/, '').trim()}
+        </h1>
       </div>
 
       <div ref={gameUiRef} className="flex-1 w-full mx-auto flex flex-col min-h-0 relative z-10">
         
-        {/* UPPER SECTION: Stats (Left) + Sprite (Right) */}
         <div className={`flex-1 flex flex-row min-h-0 mb-1.5 md:mb-3 gap-1.5 md:gap-3`}>
           
-          {/* 1. LEFT PANEL: STATS (30%) */}
           <div className="w-[35%] md:w-[30%] flex flex-col justify-start gap-1.5 md:gap-3 lg:gap-4 xl:gap-6 border-4 border-slate-700 p-1.5 md:p-3 lg:p-4 xl:p-6 bg-slate-900 shadow-[4px_4px_0_rgba(0,0,0,1)] font-mono font-bold shrink-0 z-50 overflow-y-auto hide-scrollbar">
             <StatBar label="TÀI CHÍNH" value={state.stats.money} color="bg-yellow-400" previewEffect={!isTyping ? hoveredOption?.effects?.money : undefined} floatingTexts={floatingTexts.money} />
             <StatBar label="SỨC KHỎE" value={state.stats.health} color="bg-red-500" previewEffect={!isTyping ? hoveredOption?.effects?.health : undefined} floatingTexts={floatingTexts.health} />
@@ -314,10 +381,19 @@ export const GameScreen: React.FC = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-900/40 via-transparent to-transparent z-0 pointer-events-none"></div>
             
             {/* Sprite */}
-            <CharacterSprite 
-              mood={characterMood}
-              className="z-10 drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] transform scale-75 md:scale-100 lg:scale-125 xl:scale-150 origin-center"
-            />
+            {(isEndingEvent || isPhilosophy) && (state.currentNodeId.includes('bankruptcy') || state.currentNodeId.includes('burnout') || state.currentNodeId.includes('alienation') || state.currentNodeId.includes('off_grid') || state.currentNodeId.includes('true_communist') || state.currentNodeId.includes('techno_feudalism') || state.currentNodeId.includes('data_martyr') || state.currentNodeId.includes('false_freedom')) ? (
+              <div 
+                className="z-10 w-[400px] h-[300px] bg-center bg-cover border-4 border-slate-700 bg-slate-900 shadow-[8px_8px_0_rgba(0,0,0,0.5)] transform scale-75 md:scale-100 lg:scale-125 xl:scale-150 origin-center"
+                style={{ 
+                  backgroundImage: `url('${state.currentNodeId.includes('bankruptcy') ? '/assets/bankrupcy-ending.png' : state.currentNodeId.includes('burnout') ? '/assets/burnout-ending.png' : state.currentNodeId.includes('alienation') ? '/assets/alienation-ending.png' : state.currentNodeId.includes('off_grid') ? '/assets/off-grid-ending.png' : state.currentNodeId.includes('true_communist') ? '/assets/digital-union-ending.png' : state.currentNodeId.includes('techno_feudalism') ? '/assets/techno-feudalism-ending.png' : state.currentNodeId.includes('data_martyr') ? '/assets/data-martyr-ending.png' : '/assets/false-freedom-ending.png'}')`
+                }} 
+              />
+            ) : (
+              <CharacterSprite 
+                mood={(isEndingEvent || isPhilosophy) && state.currentNodeId.includes('platform_partner') ? 'platform_partner' : characterMood}
+                className="z-10 drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] transform scale-75 md:scale-100 lg:scale-125 xl:scale-150 origin-center"
+              />
+            )}
             
             {/* Retro scanlines effect & Vignette */}
             <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-50 mix-blend-overlay"></div>
@@ -334,11 +410,11 @@ export const GameScreen: React.FC = () => {
               <span className="text-emerald-400 font-bold uppercase tracking-wider text-xs md:text-sm px-2 py-1 bg-emerald-950/50 rounded">
                 {currentNode?.speaker === 'PHILOSOPHY' ? 'GÓC NHÌN TRIẾT HỌC' : (getSpeakerName(currentNode?.speaker) || 'HỆ THỐNG')}
               </span>
-              {(isEnding || isPhilosophy) && (
+              {isEndingEvent && (
                 <span className="text-red-400 text-xs animate-pulse">| CẢNH BÁO QUAN TRỌNG</span>
               )}
             </div>
-            <p className={`text-slate-300 text-base md:text-lg lg:text-xl leading-relaxed font-mono whitespace-pre-wrap ${isEnding || isPhilosophy ? 'text-slate-200' : ''}`}>
+            <p className={`text-base md:text-lg lg:text-xl leading-relaxed font-mono whitespace-pre-wrap ${isEndingEvent ? (getEndingColor(state.currentNodeId).text + ' font-bold') : isPhilosophy ? 'text-slate-200' : 'text-slate-300'}`}>
               {displayedText}
               <span className={`inline-block w-2 h-4 md:h-5 bg-emerald-500 ml-1 ${isTyping ? 'animate-pulse' : 'hidden'}`}></span>
             </p>{!isTyping && currentPageIndex < textPages.length - 1 && <div className="absolute bottom-2 right-3 text-yellow-400 animate-bounce text-[10px] md:text-xs font-bold uppercase tracking-wider">Click để tiếp tục ▼</div>}

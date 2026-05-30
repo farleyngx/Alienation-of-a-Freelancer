@@ -209,7 +209,7 @@
     "node_ai_shock": {
       "id": "node_ai_shock",
       "speaker": "SYSTEM",
-      "text": "🚨 BƯỚC NGOẶT LỰC LƯỢNG SẢN XUẤT: Nền tảng vừa tích hợp Trí tuệ Nhân tạo (AI) có khả năng làm mọi việc tương đương bạn trong 5 giây với chi phí bằng 0. Khách hàng ồ ạt hủy hợp đồng với con người để chuyển sang dùng AI của hệ thống.",
+      "text": "BƯỚC NGOẶT LỰC LƯỢNG SẢN XUẤT: Nền tảng vừa tích hợp Trí tuệ Nhân tạo (AI) có khả năng làm mọi việc tương đương bạn trong 5 giây với chi phí bằng 0. Khách hàng ồ ạt hủy hợp đồng với con người để chuyển sang dùng AI của hệ thống.",
       "options": [
         {
           "text": "Chạy đua vũ trang. Thức đêm ngày học cách điều khiển AI để ép tốc độ làm việc gấp 5 lần, hạ giá cạnh tranh.",
@@ -383,7 +383,7 @@
     "node_data_strike": {
       "id": "node_data_strike",
       "speaker": "SYSTEM",
-      "text": "🚨 CẢNH BÁO TỐI CAO: Thuật toán phát hiện dữ liệu huấn luyện bị nhiễm độc từ tài khoản của bạn. Nền tảng đe dọa sẽ thu hồi toàn bộ số tiền đang bị giam trong ví nếu bạn tiếp tục hành vi phá hoại tư liệu sản xuất.",
+      "text": "CẢNH BÁO TỐI CAO: Thuật toán phát hiện dữ liệu huấn luyện bị nhiễm độc từ tài khoản của bạn. Nền tảng đe dọa sẽ thu hồi toàn bộ số tiền đang bị giam trong ví nếu bạn tiếp tục hành vi phá hoại tư liệu sản xuất.",
       "options": [
         {
           "text": "Tiếp tục xả rác vào hệ thống! 'Giai cấp vô sản không có gì để mất ngoài những xiềng xích'!",
@@ -445,7 +445,7 @@
     "ending_burnout": {
       "id": "ending_burnout",
       "speaker": "NARRATOR",
-      "text": "🚨 KẾT CỤC: SỰ SỤP ĐỔ CỦA SỨC LAO ĐỘNG (BURNOUT ENDING)\nSức khỏe (HP) của bạn đã cạn kiệt. Bạn gục ngã ngay trên bàn làm việc vào lúc 3 giờ sáng. Tiền trong tài khoản bị hệ thống phong tỏa.\n[Điều kiện đạt được: Sức khỏe (HP) cạn kiệt]",
+      "text": "KẾT CỤC: SỰ SỤP ĐỔ CỦA SỨC LAO ĐỘNG (BURNOUT ENDING)\nSức khỏe (HP) của bạn đã cạn kiệt. Bạn gục ngã ngay trên bàn làm việc vào lúc 3 giờ sáng. Tiền trong tài khoản bị hệ thống phong tỏa.\n[Điều kiện đạt được: Sức khỏe (HP) cạn kiệt]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -463,7 +463,7 @@
     "ending_alienation": {
       "id": "ending_alienation",
       "speaker": "NARRATOR",
-      "text": "🤖 KẾT CỤC: SỰ THA HÓA HOÀN TOÀN (ALIENATION ENDING)\nBản sắc cá nhân (IDENTITY) đã biến mất. Bạn siêu giàu, nhưng bạn không còn là một con người sống động nữa. Bạn đã trở thành một cỗ máy tự động, sản xuất các nội dung rỗng tuếch chỉ để phù hợp với thông số của thuật toán.\n[Điều kiện đạt được: Bản sắc cá nhân (IDENTITY) biến mất]",
+      "text": "KẾT CỤC: SỰ THA HÓA HOÀN TOÀN (ALIENATION ENDING)\nBản sắc cá nhân (IDENTITY) đã biến mất. Bạn siêu giàu, nhưng bạn không còn là một con người sống động nữa. Bạn đã trở thành một cỗ máy tự động, sản xuất các nội dung rỗng tuếch chỉ để phù hợp với thông số của thuật toán.\n[Điều kiện đạt được: Bản sắc cá nhân (IDENTITY) biến mất]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -481,7 +481,7 @@
     "ending_bankruptcy": {
       "id": "ending_bankruptcy",
       "speaker": "NARRATOR",
-      "text": "💸 KẾT CỤC: BẦN CÙNG HÓA KỶ NGUYÊN SỐ (BANKRUPTCY ENDING)\nTiền bạc chạm đáy. Điện bị cắt, mạng bị ngắt. Tài khoản làm việc bị hệ thống vô hiệu hóa do không duy trì được tỷ suất lợi nhuận tối thiểu.\n[Điều kiện đạt được: Tiền bạc (MONEY) chạm đáy]",
+      "text": "KẾT CỤC: BẦN CÙNG HÓA KỶ NGUYÊN SỐ (BANKRUPTCY ENDING)\nTiền bạc chạm đáy. Điện bị cắt, mạng bị ngắt. Tài khoản làm việc bị hệ thống vô hiệu hóa do không duy trì được tỷ suất lợi nhuận tối thiểu.\n[Điều kiện đạt được: Tiền bạc (MONEY) chạm đáy]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -499,7 +499,7 @@
     "ending_platform_partner": {
       "id": "ending_platform_partner",
       "speaker": "NARRATOR",
-      "text": "😈 KẾT CỤC: TRỞ THÀNH TAY SAI TƯ BẢN (PLATFORM PARTNER ENDING)\nBạn đã ký khế ước. Trở nên giàu sang tột độ nhờ việc ăn hoa hồng trên mồ hôi của hàng nghìn freelancer cấp dưới. Bạn đứng ra tổ chức các khóa học đi truyền bá hệ tư tưởng bóc lột.\n[Điều kiện đạt được: Chấp nhận làm Đại Sứ Nền Tảng]",
+      "text": "KẾT CỤC: TRỞ THÀNH TAY SAI TƯ BẢN (PLATFORM PARTNER ENDING)\nBạn đã ký khế ước. Trở nên giàu sang tột độ nhờ việc ăn hoa hồng trên mồ hôi của hàng nghìn freelancer cấp dưới. Bạn đứng ra tổ chức các khóa học đi truyền bá hệ tư tưởng bóc lột.\n[Điều kiện đạt được: Chấp nhận làm Đại Sứ Nền Tảng]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -517,7 +517,7 @@
     "ending_off_grid": {
       "id": "ending_off_grid",
       "speaker": "NARRATOR",
-      "text": "🏡 KẾT CỤC: LỘI NGƯỢC DÒNG VĂN MINH (OFF-GRID ENDING)\nBạn ngắt mạng, về quê trồng rau nuôi cá. Nghèo vật chất nhưng thanh thản tâm hồn. Không còn bất kỳ thuật toán nào theo dõi bạn nữa.\n[Điều kiện đạt được: Xóa app, rời bỏ thành thị]",
+      "text": "KẾT CỤC: LỘI NGƯỢC DÒNG VĂN MINH (OFF-GRID ENDING)\nBạn ngắt mạng, về quê trồng rau nuôi cá. Nghèo vật chất nhưng thanh thản tâm hồn. Không còn bất kỳ thuật toán nào theo dõi bạn nữa.\n[Điều kiện đạt được: Xóa app, rời bỏ thành thị]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -535,7 +535,7 @@
     "ending_true_communist": {
       "id": "ending_true_communist",
       "speaker": "NARRATOR",
-      "text": "✊ KẾT CỤC: THỨC TỈNH Ý THỨC GIAI CẤP (DIGITAL UNION ENDING)\nBạn mất trắng tài khoản, nhưng Nghiệp đoàn Số do bạn khởi xướng đã khiến toàn bộ nền tảng tê liệt, buộc giới chủ phải đàm phán giảm mức thu tô và công khai thuật toán.\n[Điều kiện đạt được: Kêu gọi tổng đình công Nghiệp đoàn Số]",
+      "text": "KẾT CỤC: THỨC TỈNH Ý THỨC GIAI CẤP (DIGITAL UNION ENDING)\nBạn mất trắng tài khoản, nhưng Nghiệp đoàn Số do bạn khởi xướng đã khiến toàn bộ nền tảng tê liệt, buộc giới chủ phải đàm phán giảm mức thu tô và công khai thuật toán.\n[Điều kiện đạt được: Kêu gọi tổng đình công Nghiệp đoàn Số]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -553,7 +553,7 @@
     "ending_techno_feudalism": {
       "id": "ending_techno_feudalism",
       "speaker": "NARRATOR",
-      "text": "🏰 KẾT CỤC: NÔNG NÔ THỜI KỲ SỐ (TECHNO-FEUDALISM ENDING)\nBạn mắc kẹt trong nợ nần vô tận. Bạn làm việc 20 tiếng/ngày chỉ để trả lãi vay và tiền duy trì tài khoản hàng tháng. Tư liệu sản xuất thuộc về giới chủ, bạn chỉ được phép cày cuốc trên mảnh đất ảo của họ.\n[Điều kiện đạt được: Mắc kẹt trong vòng lặp trả Địa tô]",
+      "text": "KẾT CỤC: NÔNG NÔ THỜI KỲ SỐ (TECHNO-FEUDALISM ENDING)\nBạn mắc kẹt trong nợ nần vô tận. Bạn làm việc 20 tiếng/ngày chỉ để trả lãi vay và tiền duy trì tài khoản hàng tháng. Tư liệu sản xuất thuộc về giới chủ, bạn chỉ được phép cày cuốc trên mảnh đất ảo của họ.\n[Điều kiện đạt được: Mắc kẹt trong vòng lặp trả Địa tô]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -571,7 +571,7 @@
     "ending_data_martyr": {
       "id": "ending_data_martyr",
       "speaker": "NARRATOR",
-      "text": "☠️ KẾT CỤC: TỬ ĐẠO DỮ LIỆU (DATA MARTYR ENDING)\nTài khoản bị xóa sổ, nhưng hệ thống AI của nền tảng đã gặp lỗi nghiêm trọng, trì hoãn âm mưu tự động hóa để sa thải người lao động.\n[Điều kiện đạt được: Thực hiện Đình công Dữ liệu]",
+      "text": "KẾT CỤC: TỬ ĐẠO DỮ LIỆU (DATA MARTYR ENDING)\nTài khoản bị xóa sổ, nhưng hệ thống AI của nền tảng đã gặp lỗi nghiêm trọng, trì hoãn âm mưu tự động hóa để sa thải người lao động.\n[Điều kiện đạt được: Thực hiện Đình công Dữ liệu]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -589,7 +589,7 @@
     "ending_self_exploitation": {
       "id": "ending_self_exploitation",
       "speaker": "NARRATOR",
-      "text": "🎭 KẾT CỤC: KẺ TỰ BÓC LỘT HOÀN HẢO (SELF-EXPLOITATION ENDING)\nCơ thể bạn gục ngã trên giường bệnh, nhưng não bộ vẫn tự dằn vặt: 'Chỉ tại mình chưa đủ nỗ lực, thành công luôn có cái giá của nó'.\n[Điều kiện đạt được: Trở thành Kẻ Tự Bóc Lột Hoàn Hảo]",
+      "text": "KẾT CỤC: KẺ TỰ BÓC LỘT HOÀN HẢO (SELF-EXPLOITATION ENDING)\nCơ thể bạn gục ngã trên giường bệnh, nhưng não bộ vẫn tự dằn vặt: 'Chỉ tại mình chưa đủ nỗ lực, thành công luôn có cái giá của nó'.\n[Điều kiện đạt được: Trở thành Kẻ Tự Bóc Lột Hoàn Hảo]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -607,7 +607,7 @@
     "ending_platform_coop": {
       "id": "ending_platform_coop",
       "speaker": "NARRATOR",
-      "text": "🌟 KẾT CỤC TỐI THƯỢNG: CỘNG ĐỒNG SỞ HỮU CHUNG (PLATFORM CO-OP ENDING)\nNền tảng mới vận hành trơn tru. Thu nhập chia đều theo đóng góp. Mọi quyết sách được cộng đồng bầu chọn minh bạch. Bạn được làm việc với đầy đủ phẩm giá.\n[Điều kiện đạt được: Xây dựng Nền tảng Công cộng]",
+      "text": "KẾT CỤC TỐI THƯỢNG: CỘNG ĐỒNG SỞ HỮU CHUNG (PLATFORM CO-OP ENDING)\nNền tảng mới vận hành trơn tru. Thu nhập chia đều theo đóng góp. Mọi quyết sách được cộng đồng bầu chọn minh bạch. Bạn được làm việc với đầy đủ phẩm giá.\n[Điều kiện đạt được: Xây dựng Nền tảng Công cộng]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
@@ -625,7 +625,7 @@
     "ending_false_freedom": {
       "id": "ending_false_freedom",
       "speaker": "NARRATOR",
-      "text": "🏚️ KẾT CỤC: ẢO TƯỞNG TỰ DO (FALSE FREEDOM ENDING)\nBạn từ chối tham gia các Nền Tảng vì mức phí môi giới quá đắt, nghĩ rằng mình có thể tự tìm khách ngoài đời thực. Tuy nhiên, mọi khách hàng đều đã bị các nền tảng thâu tóm độc quyền. Bạn nhanh chóng trắng tay.\n[Điều kiện đạt được: Từ chối mọi nền tảng trung gian từ đầu]",
+      "text": "KẾT CỤC: ẢO TƯỞNG TỰ DO (FALSE FREEDOM ENDING)\nBạn từ chối tham gia các Nền Tảng vì mức phí môi giới quá đắt, nghĩ rằng mình có thể tự tìm khách ngoài đời thực. Tuy nhiên, mọi khách hàng đều đã bị các nền tảng thâu tóm độc quyền. Bạn nhanh chóng trắng tay.\n[Điều kiện đạt được: Từ chối mọi nền tảng trung gian từ đầu]",
       "options": [
         {
           "text": "Đọc Phân tích Triết học",
