@@ -15,7 +15,7 @@ export const CharacterSprite: React.FC<CharacterSpriteProps> = ({ mood = 'happy'
   } else if (mood === 'quit') {
     spriteClass = 'sprite-quit-job';
     bgImage = '/assets/quit-job.png';
-    widthClass = 'w-[400px] h-[386px]'; // Tính toán chuẩn aspect ratio cho quit-job.png
+    widthClass = 'w-[400px] h-[300px]'; // Tính toán chuẩn aspect ratio cho quit-job.png
   } else if (mood === 'platform_partner') {
     spriteClass = 'sprite-platform-partner';
     bgImage = '/assets/platform-partner-ending.png';
