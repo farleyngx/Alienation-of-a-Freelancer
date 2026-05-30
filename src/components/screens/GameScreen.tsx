@@ -350,10 +350,16 @@ export const GameScreen: React.FC = () => {
           {state.currentNodeId.includes('false_freedom') && (
             <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/false-freedom-ending.png')" }}></div>
           )}
+          {state.currentNodeId.includes('self_exploitation') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/self-exploitation-ending.png')" }}></div>
+          )}
+          {state.currentNodeId.includes('platform_coop') && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/platform-co-op-trending.png')" }}></div>
+          )}
           {state.currentNodeId.includes('platform_partner') && (
             <div className="absolute inset-0 bg-top" style={{ backgroundImage: "url('/assets/platform-partner-ending.png')", backgroundSize: '100% auto' }}></div>
           )}
-          {!state.currentNodeId.includes('bankruptcy') && !state.currentNodeId.includes('burnout') && !state.currentNodeId.includes('alienation') && !state.currentNodeId.includes('off_grid') && !state.currentNodeId.includes('true_communist') && !state.currentNodeId.includes('techno_feudalism') && !state.currentNodeId.includes('data_martyr') && !state.currentNodeId.includes('false_freedom') && !state.currentNodeId.includes('platform_partner') && (
+          {!state.currentNodeId.includes('bankruptcy') && !state.currentNodeId.includes('burnout') && !state.currentNodeId.includes('alienation') && !state.currentNodeId.includes('off_grid') && !state.currentNodeId.includes('true_communist') && !state.currentNodeId.includes('techno_feudalism') && !state.currentNodeId.includes('data_martyr') && !state.currentNodeId.includes('false_freedom') && !state.currentNodeId.includes('self_exploitation') && !state.currentNodeId.includes('platform_coop') && !state.currentNodeId.includes('platform_partner') && (
             <div className="absolute w-[600px] h-[400px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ backgroundImage: `url(/assets/happy-coding.png)`, backgroundPosition: '-300px 0px', backgroundSize: '1200px 2400px', imageRendering: 'pixelated' }} />
           )}
         </div>
@@ -381,11 +387,11 @@ export const GameScreen: React.FC = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-900/40 via-transparent to-transparent z-0 pointer-events-none"></div>
             
             {/* Sprite */}
-            {(isEndingEvent || isPhilosophy) && (state.currentNodeId.includes('bankruptcy') || state.currentNodeId.includes('burnout') || state.currentNodeId.includes('alienation') || state.currentNodeId.includes('off_grid') || state.currentNodeId.includes('true_communist') || state.currentNodeId.includes('techno_feudalism') || state.currentNodeId.includes('data_martyr') || state.currentNodeId.includes('false_freedom')) ? (
+            {(isEndingEvent || isPhilosophy) && (state.currentNodeId.includes('bankruptcy') || state.currentNodeId.includes('burnout') || state.currentNodeId.includes('alienation') || state.currentNodeId.includes('off_grid') || state.currentNodeId.includes('true_communist') || state.currentNodeId.includes('techno_feudalism') || state.currentNodeId.includes('data_martyr') || state.currentNodeId.includes('false_freedom') || state.currentNodeId.includes('self_exploitation') || state.currentNodeId.includes('platform_coop')) ? (
               <div 
                 className="z-10 w-[400px] h-[300px] bg-center bg-cover border-4 border-slate-700 bg-slate-900 shadow-[8px_8px_0_rgba(0,0,0,0.5)] transform scale-75 md:scale-100 lg:scale-125 xl:scale-150 origin-center"
                 style={{ 
-                  backgroundImage: `url('${state.currentNodeId.includes('bankruptcy') ? '/assets/bankrupcy-ending.png' : state.currentNodeId.includes('burnout') ? '/assets/burnout-ending.png' : state.currentNodeId.includes('alienation') ? '/assets/alienation-ending.png' : state.currentNodeId.includes('off_grid') ? '/assets/off-grid-ending.png' : state.currentNodeId.includes('true_communist') ? '/assets/digital-union-ending.png' : state.currentNodeId.includes('techno_feudalism') ? '/assets/techno-feudalism-ending.png' : state.currentNodeId.includes('data_martyr') ? '/assets/data-martyr-ending.png' : '/assets/false-freedom-ending.png'}')`
+                  backgroundImage: `url('${state.currentNodeId.includes('bankruptcy') ? '/assets/bankrupcy-ending.png' : state.currentNodeId.includes('burnout') ? '/assets/burnout-ending.png' : state.currentNodeId.includes('alienation') ? '/assets/alienation-ending.png' : state.currentNodeId.includes('off_grid') ? '/assets/off-grid-ending.png' : state.currentNodeId.includes('true_communist') ? '/assets/digital-union-ending.png' : state.currentNodeId.includes('techno_feudalism') ? '/assets/techno-feudalism-ending.png' : state.currentNodeId.includes('data_martyr') ? '/assets/data-martyr-ending.png' : state.currentNodeId.includes('false_freedom') ? '/assets/false-freedom-ending.png' : state.currentNodeId.includes('self_exploitation') ? '/assets/self-exploitation-ending.png' : '/assets/platform-co-op-trending.png'}')`
                 }} 
               />
             ) : (
