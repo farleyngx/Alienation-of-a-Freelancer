@@ -4,7 +4,7 @@
 .sprite-typing-happy,
 .sprite-typing-tired {
   /* Tailwind đã quản lý w/h, nhưng spritesheet cần tọa độ tuyệt đối để neo */
-  background-size: 600px 1200px; /* Lớn gấp 6x2 so với 1 khung đơn 300x200 */
+  background-size: 800px 1800px; /* Lớn gấp 6x2 so với 1 khung đơn 300x200 */
   background-repeat: no-repeat;
   will-change: background-position;
 }
@@ -17,7 +17,7 @@
 
 @keyframes playTypingHappy {
   from { background-position: 0px 0px; }
-  to { background-position: 0px -1200px; }
+  to { background-position: 0px -1800px; }
 }
 
 /* 2. Logic cho Gõ Mệt Mỏi (Cột phải) */
@@ -27,19 +27,19 @@
 }
 
 @keyframes playTypingTired {
-  from { background-position: -300px 0px; }
-  to { background-position: -300px -1200px; }
+  from { background-position: -400px 0px; }
+  to { background-position: -400px -1800px; }
 }
 
 /* 3. Logic cho Nghỉ Việc (Màn hình đầu) */
 .sprite-quit-job {
-  background-size: 300px 1449px;
+  background-size: 400px 1932px;
   background-repeat: no-repeat;
   will-change: background-position;
-  animation: playQuitJob 1s steps(5) infinite;
+  animation: playQuitJob 2s steps(5) infinite;
 }
 
 @keyframes playQuitJob {
   from { background-position: 0px 0px; }
-  to { background-position: 0px -1449px; }
+  to { background-position: 0px -1932px; }
 }

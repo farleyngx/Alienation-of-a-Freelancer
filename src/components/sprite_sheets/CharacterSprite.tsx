@@ -8,14 +8,14 @@ export interface CharacterSpriteProps {
 export const CharacterSprite: React.FC<CharacterSpriteProps> = ({ mood = 'happy', className = '' }) => {
   let spriteClass = 'sprite-typing-happy';
   let bgImage = '/assets/happy-coding.png';
-  let widthClass = 'w-[300px] h-[200px]';
+  let widthClass = 'w-[400px] h-[300px]';
 
   if (mood === 'tired') {
     spriteClass = 'sprite-typing-tired';
   } else if (mood === 'quit') {
     spriteClass = 'sprite-quit-job';
     bgImage = '/assets/quit-job.png';
-    widthClass = 'w-[300px] h-[290px]'; // Tỷ lệ gần đúng với 672x649
+    widthClass = 'w-[400px] h-[386px]'; // Tính toán chuẩn aspect ratio cho quit-job.png
   }
 
   return (
