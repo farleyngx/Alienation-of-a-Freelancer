@@ -30,3 +30,16 @@
   from { background-position: -300px 0px; }
   to { background-position: -300px -1200px; }
 }
+
+/* 3. Logic cho Nghỉ Việc (Màn hình đầu) */
+.sprite-quit-job {
+  background-size: 300px 1449px;
+  background-repeat: no-repeat;
+  will-change: background-position;
+  animation: playQuitJob 1s steps(5) infinite;
+}
+
+@keyframes playQuitJob {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -1449px; }
+}

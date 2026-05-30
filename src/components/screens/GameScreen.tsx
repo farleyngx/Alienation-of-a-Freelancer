@@ -225,8 +225,11 @@ export const GameScreen: React.FC = () => {
     return <div className="text-red-500 p-8 font-['Press_Start_2P']">Lỗi kịch bản: Node không tồn tại!</div>;
   }
 
-  // Quyết định trạng thái nhân vật dựa trên HP
-  const characterMood = state.stats.health < 40 ? 'tired' : 'happy';
+  // Quyết định trạng thái nhân vật dựa trên HP và node
+  let characterMood: 'happy' | 'tired' | 'quit' = state.stats.health < 40 ? 'tired' : 'happy';
+  if (state.currentNodeId === 'start_node') {
+    characterMood = 'quit';
+  }
 
 
   const getSpeakerName = (speaker: string) => {
@@ -288,10 +291,26 @@ export const GameScreen: React.FC = () => {
 
       {/* ENDING CINEMATIC VIEW (YOU DIED STYLE) */}
       <div ref={cinematicOverlayRef} className="absolute inset-0 z-[100] hidden flex-col items-center justify-center bg-black overflow-hidden pointer-events-none">
-         <div ref={cinematicSpriteRef} className="absolute w-[600px] h-[400px] opacity-0 blur-sm mix-blend-screen" style={{ backgroundImage: `url(/assets/happy-coding.png)`, backgroundPosition: '-300px 0px', backgroundSize: '1200px 2400px', imageRendering: 'pixelated' }} />
-         <h1 ref={cinematicTitleRef} className="text-4xl md:text-5xl lg:text-7xl font-serif tracking-widest text-center uppercase z-10 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] px-4" style={{ fontFamily: "'Crimson Pro', serif", color: '#dc2626' }}>
-           {(currentNode?.text?.split('\n')[0] || "KẾT CỤC").replace(/^[^a-zA-ZÀ-ỹ0-9]*/, '').trim()}
-         </h1>
+        
+        {/* Container for background images (animated by GSAP) */}
+        <div ref={cinematicSpriteRef} className="absolute inset-0 opacity-0 blur-sm mix-blend-screen">
+          {state.currentNodeId === 'ending_bankruptcy' && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/bankrupcy-ending.png')" }}></div>
+          )}
+          {state.currentNodeId === 'ending_burnout' && (
+            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: "url('/assets/burnout-ending.png')" }}></div>
+          )}
+          {state.currentNodeId !== 'ending_bankruptcy' && state.currentNodeId !== 'ending_burnout' && (
+            <div className="absolute w-[600px] h-[400px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ backgroundImage: `url(/assets/happy-coding.png)`, backgroundPosition: '-300px 0px', backgroundSize: '1200px 2400px', imageRendering: 'pixelated' }} />
+          )}
+        </div>
+        
+        <h1 ref={cinematicTitleRef} className="text-6xl md:text-8xl lg:text-9xl font-black text-red-600 mb-8 tracking-widest text-center cinematic-title relative z-10" style={{ fontFamily: "'Crimson Pro', serif", textShadow: "0 0 20px rgba(220, 38, 38, 0.8)" }}>
+          {currentNode?.title}
+        </h1>
+        <p className="text-xl md:text-3xl text-gray-400 mb-12 tracking-wider text-center px-4 max-w-4xl relative z-10" style={{ fontFamily: "'Crimson Pro', serif" }}>
+          {currentNode?.text}
+        </p>
       </div>
 
       <div ref={gameUiRef} className="flex-1 w-full mx-auto flex flex-col min-h-0 relative z-10">
