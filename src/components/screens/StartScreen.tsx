@@ -20,13 +20,14 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
 
   const [playClick] = useSound('/assets/audio/click-option.mp3', { volume: settings.soundVolume * 0.8, soundEnabled: settings.soundEnabled });
   const [playWaiting, { stop: stopWaiting }] = useSound('/assets/audio/waiting_screen.mp3', { volume: settings.bgmVolume, loop: true, soundEnabled: settings.bgmEnabled });
+  const [systemStarted, setSystemStarted] = useState(false);
 
   // Phát nhạc chờ khi vào web
   useEffect(() => {
-    if (settings.bgmEnabled) playWaiting();
+    if (systemStarted && settings.bgmEnabled) playWaiting();
     else stopWaiting();
     return () => stopWaiting();
-  }, [settings.bgmEnabled, playWaiting, stopWaiting]);
+  }, [systemStarted, settings.bgmEnabled, playWaiting, stopWaiting]);
   const [playType] = useSound('/assets/audio/type.mp3', { volume: 0.05, soundEnabled: settings.soundEnabled });
 
   const [hasSave, setHasSave] = useState(false);
@@ -39,6 +40,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
   }, []);
 
   useGSAP(() => {
+    if (!systemStarted) return;
     const tl = gsap.timeline();
 
     // 1. Boot text effect
@@ -77,7 +79,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
       { opacity: 1, duration: 0.5, delay: 1 }
     );
 
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [systemStarted] });
 
   const handleStart = (isNewGame: boolean) => {
     playClick();
@@ -108,6 +110,17 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
       ref={containerRef}
       className="h-screen w-full bg-[#0a0a0c] text-green-500 font-mono flex flex-col items-center justify-center relative overflow-hidden"
     >
+      {!systemStarted && (
+        <div 
+          className="absolute inset-0 z-50 flex items-center justify-center cursor-pointer bg-[#0a0a0c]"
+          onClick={() => { playClick(); setSystemStarted(true); }}
+        >
+          <div className="text-green-500 font-mono animate-pulse text-sm md:text-xl border border-green-500 p-4">
+            [ BẤM VÀO MÀN HÌNH ĐỂ KHỞI ĐỘNG HỆ THỐNG ]
+          </div>
+        </div>
+      )}
+
       {/* SETTINGS MENU (Giống GameScreen) */}
       <button 
         onClick={() => { setShowSettings(!showSettings); playClick(); }}

@@ -36,7 +36,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
       // Kiểm tra điều kiện Kích hoạt Kịch bản Khẩn cấp trước khi chuyển node thông thường
       let finalNextNodeId = next_node_id;
-      const isNextNodeEnding = (storyData.nodes as Record<string, any>)[next_node_id]?.is_ending;
+      const isNextNodeEnding = next_node_id.startsWith('ending_');
 
       if (!isNextNodeEnding) {
         if (newStats.health <= 0) finalNextNodeId = 'ending_burnout';
